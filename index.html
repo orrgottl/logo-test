@@ -10,7 +10,6 @@
         background: #fff;
       }
     </style>
-    <style></style>
   </head>
   <body>
     <script>
@@ -18,42 +17,42 @@
         (() => {
           'use strict';
           var he = {
-              198: c => {
-                var z = 4,
+              198: u => {
+                var m = 4,
                   w = 0.001,
                   B = 1e-7,
                   N = 10,
-                  g = 11,
-                  O = 1 / (g - 1),
+                  b = 11,
+                  $ = 1 / (b - 1),
                   x = typeof Float32Array == 'function';
-                function _(l, o) {
+                function k(l, o) {
                   return 1 - 3 * o + 3 * l;
                 }
-                function $(l, o) {
+                function R(l, o) {
                   return 3 * o - 6 * l;
                 }
-                function k(l) {
+                function _(l) {
                   return 3 * l;
                 }
-                function L(l, o, m) {
-                  return ((_(o, m) * l + $(o, m)) * l + k(o)) * l;
+                function V(l, o, y) {
+                  return ((k(o, y) * l + R(o, y)) * l + _(o)) * l;
                 }
-                function I(l, o, m) {
-                  return 3 * _(o, m) * l * l + 2 * $(o, m) * l + k(o);
+                function I(l, o, y) {
+                  return 3 * k(o, y) * l * l + 2 * R(o, y) * l + _(o);
                 }
-                function Y(l, o, m, S, T) {
+                function Y(l, o, y, z, T) {
                   var v,
                     p,
-                    R = 0;
-                  do (p = o + (m - o) / 2), (v = L(p, S, T) - l), v > 0 ? (m = p) : (o = p);
-                  while (Math.abs(v) > B && ++R < N);
+                    O = 0;
+                  do (p = o + (y - o) / 2), (v = V(p, z, T) - l), v > 0 ? (y = p) : (o = p);
+                  while (Math.abs(v) > B && ++O < N);
                   return p;
                 }
-                function X(l, o, m, S) {
-                  for (var T = 0; T < z; ++T) {
-                    var v = I(o, m, S);
+                function X(l, o, y, z) {
+                  for (var T = 0; T < m; ++T) {
+                    var v = I(o, y, z);
                     if (v === 0) return o;
-                    var p = L(o, m, S) - l;
+                    var p = V(o, y, z) - l;
                     o -= p / v;
                   }
                   return o;
@@ -61,1483 +60,1448 @@
                 function J(l) {
                   return l;
                 }
-                c.exports = function (o, m, S, T) {
-                  if (!(0 <= o && o <= 1 && 0 <= S && S <= 1))
+                u.exports = function (o, y, z, T) {
+                  if (!(0 <= o && o <= 1 && 0 <= z && z <= 1))
                     throw new Error('bezier x values must be in [0, 1] range');
-                  if (o === m && S === T) return J;
-                  for (var v = x ? new Float32Array(g) : new Array(g), p = 0; p < g; ++p) v[p] = L(p * O, o, S);
-                  function R(E) {
-                    for (var M = 0, C = 1, G = g - 1; C !== G && v[C] <= E; ++C) M += O;
+                  if (o === y && z === T) return J;
+                  for (var v = x ? new Float32Array(b) : new Array(b), p = 0; p < b; ++p) v[p] = V(p * $, o, z);
+                  function O(F) {
+                    for (var M = 0, C = 1, G = b - 1; C !== G && v[C] <= F; ++C) M += $;
                     --C;
-                    var Z = (E - v[C]) / (v[C + 1] - v[C]),
-                      A = M + Z * O,
-                      W = I(A, o, S);
-                    return W >= w ? X(E, A, o, S) : W === 0 ? A : Y(E, M, M + O, o, S);
+                    var Z = (F - v[C]) / (v[C + 1] - v[C]),
+                      A = M + Z * $,
+                      W = I(A, o, z);
+                    return W >= w ? X(F, A, o, z) : W === 0 ? A : Y(F, M, M + $, o, z);
                   }
                   return function (M) {
-                    return M === 0 ? 0 : M === 1 ? 1 : L(R(M), m, T);
+                    return M === 0 ? 0 : M === 1 ? 1 : V(O(M), y, T);
                   };
                 };
               },
             },
             K = {};
-          function y(c) {
-            var z = K[c];
-            if (z !== void 0) return z.exports;
-            var w = (K[c] = { exports: {} });
-            return he[c](w, w.exports, y), w.exports;
+          function S(u) {
+            var m = K[u];
+            if (m !== void 0) return m.exports;
+            var w = (K[u] = { exports: {} });
+            return he[u](w, w.exports, S), w.exports;
           }
-          (y.n = c => {
-            var z = c && c.__esModule ? () => c.default : () => c;
-            return y.d(z, { a: z }), z;
+          (S.n = u => {
+            var m = u && u.__esModule ? () => u.default : () => u;
+            return S.d(m, { a: m }), m;
           }),
-            (y.d = (c, z) => {
-              for (var w in z) y.o(z, w) && !y.o(c, w) && Object.defineProperty(c, w, { enumerable: !0, get: z[w] });
+            (S.d = (u, m) => {
+              for (var w in m) S.o(m, w) && !S.o(u, w) && Object.defineProperty(u, w, { enumerable: !0, get: m[w] });
             }),
-            (y.g = (function () {
-              if (typeof globalThis == 'object') return globalThis;
-              try {
-                return this || new Function('return this')();
-              } catch {
-                if (typeof window == 'object') return window;
-              }
-            })()),
-            (y.o = (c, z) => Object.prototype.hasOwnProperty.call(c, z)),
-            (y.r = c => {
+            (S.o = (u, m) => Object.prototype.hasOwnProperty.call(u, m)),
+            (S.r = u => {
               typeof Symbol < 'u' &&
                 Symbol.toStringTag &&
-                Object.defineProperty(c, Symbol.toStringTag, { value: 'Module' }),
-                Object.defineProperty(c, '__esModule', { value: !0 });
+                Object.defineProperty(u, Symbol.toStringTag, { value: 'Module' }),
+                Object.defineProperty(u, '__esModule', { value: !0 });
             });
           var Q = {};
           (() => {
-            var c = typeof window < 'u' ? window : typeof y.g < 'u' ? y.g : typeof self < 'u' ? self : {};
-            (c.SENTRY_RELEASE = { id: '3241fe65bb877a1911ad8ac9bd4bc75b1473232c' }),
-              (c.SENTRY_RELEASES = c.SENTRY_RELEASES || {}),
-              (c.SENTRY_RELEASES['mf-app-loader@mondaycom-3j'] = { id: '3241fe65bb877a1911ad8ac9bd4bc75b1473232c' });
-          })(),
-            (() => {
-              y.r(Q), y.d(Q, { init: () => He, render: () => je, unmount: () => qe, updateInitialData: () => Ue });
-              var c = {};
-              y.r(c);
-              const z = Object.defineProperty({ __proto__: null }, Symbol.toStringTag, { value: 'Module' });
-              var w;
-              (function (e) {
-                (e[(e.OwnersOnly = 30)] = 'OwnersOnly'),
-                  (e[(e.StructureAndContent = 20)] = 'StructureAndContent'),
-                  (e[(e.ContentOnly = 10)] = 'ContentOnly'),
-                  (e[(e.Assignee = 5)] = 'Assignee'),
-                  (e[(e.ReadOnly = 0)] = 'ReadOnly');
-              })(w || (w = {}));
-              var B;
-              (function (e) {
-                (e.Board = 'board'),
-                  (e.Workspace = 'workspace'),
-                  (e.Overview = 'overview'),
-                  (e.Item = 'item'),
-                  (e.Group = 'group'),
-                  (e.User = 'user'),
-                  (e.File = 'file'),
-                  (e.Folder = 'folder'),
-                  (e.Doc = 'doc');
-              })(B || (B = {}));
-              var N;
-              (function (e) {
-                (e.Yearly = 'yearly'), (e.Monthly = 'monthly'), (e.Biennially = 'two_yearly');
-              })(N || (N = {}));
-              var g;
-              (function (e) {
-                (e.Core = 'core'),
-                  (e.CRM = 'crm'),
-                  (e.Marketing = 'marketing'),
-                  (e.Software = 'software'),
-                  (e.ProjectManagement = 'project_management'),
-                  (e.Forms = 'forms'),
-                  (e.Whiteboard = 'whiteboard'),
-                  (e.Knowledge = 'knowledge'),
-                  (e.Workflows = 'workflows');
-              })(g || (g = {}));
-              const O = [g.Core, g.CRM, g.Marketing, g.Software, g.ProjectManagement],
-                x = [g.Forms, g.Whiteboard, g.Knowledge, g.Workflows];
-              var _;
-              (function (e) {
-                (e.CUSTOM = 'custom'), (e.STATIC = 'static'), (e.APP = 'app_recipe');
-              })(_ || (_ = {}));
-              var $;
-              (function (e) {
-                (e.MONDAY = 'monday'), (e.APPS = 'apps');
-              })($ || ($ = {}));
-              var k;
-              (function (e) {
-                e.HIPAA = 'hipaa';
-              })(k || (k = {}));
-              var L;
-              (function (e) {
-                e.crmGlobalSettings = 'CRM_SETTINGS';
-              })(L || (L = {}));
-              let I;
-              function Y() {
-                if (!I)
-                  throw new Error(
-                    'API was not set yet, using the API is only possible after the "init" function has been called'
-                  );
-                return I;
+            S.r(Q), S.d(Q, { init: () => He, render: () => Ue, unmount: () => qe, updateInitialData: () => je });
+            var u = {};
+            S.r(u);
+            const m = Object.defineProperty({ __proto__: null }, Symbol.toStringTag, { value: 'Module' });
+            var w;
+            (function (e) {
+              (e[(e.OwnersOnly = 30)] = 'OwnersOnly'),
+                (e[(e.StructureAndContent = 20)] = 'StructureAndContent'),
+                (e[(e.ContentOnly = 10)] = 'ContentOnly'),
+                (e[(e.Assignee = 5)] = 'Assignee'),
+                (e[(e.ReadOnly = 0)] = 'ReadOnly');
+            })(w || (w = {}));
+            var B;
+            (function (e) {
+              (e.Board = 'board'),
+                (e.Workspace = 'workspace'),
+                (e.Overview = 'overview'),
+                (e.Item = 'item'),
+                (e.Group = 'group'),
+                (e.User = 'user'),
+                (e.File = 'file'),
+                (e.Folder = 'folder'),
+                (e.Doc = 'doc');
+            })(B || (B = {}));
+            var N;
+            (function (e) {
+              (e.Yearly = 'yearly'), (e.Monthly = 'monthly'), (e.Biennially = 'two_yearly');
+            })(N || (N = {}));
+            var b;
+            (function (e) {
+              (e.Core = 'core'),
+                (e.CRM = 'crm'),
+                (e.Marketing = 'marketing'),
+                (e.Software = 'software'),
+                (e.ProjectManagement = 'project_management'),
+                (e.Forms = 'forms'),
+                (e.Whiteboard = 'whiteboard'),
+                (e.Knowledge = 'knowledge'),
+                (e.Workflows = 'workflows');
+            })(b || (b = {}));
+            const $ = [b.Core, b.CRM, b.Marketing, b.Software, b.ProjectManagement],
+              x = [b.Forms, b.Whiteboard, b.Knowledge, b.Workflows];
+            var k;
+            (function (e) {
+              (e.CUSTOM = 'custom'), (e.STATIC = 'static'), (e.APP = 'app_recipe');
+            })(k || (k = {}));
+            var R;
+            (function (e) {
+              (e.MONDAY = 'monday'), (e.APPS = 'apps');
+            })(R || (R = {}));
+            var _;
+            (function (e) {
+              e.HIPAA = 'hipaa';
+            })(_ || (_ = {}));
+            var V;
+            (function (e) {
+              e.crmGlobalSettings = 'CRM_SETTINGS';
+            })(V || (V = {}));
+            let I;
+            function Y() {
+              if (!I)
+                throw new Error(
+                  'API was not set yet, using the API is only possible after the "init" function has been called'
+                );
+              return I;
+            }
+            function X(e) {
+              I = e;
+            }
+            function J({ project: e, release: t, dsn: i, environment: r, origin: n } = {}) {
+              const { loggerService: s } = Y();
+              s && e && t && i && s.addClient(e, { release: t, dsn: i, environment: r, origin: n });
+            }
+            class l {
+              constructor(t) {
+                (this.subscriptions = []), (this.subscriptions = []), t && this.subscribe(t);
               }
-              function X(e) {
-                I = e;
+              subscribe(t) {
+                this.subscriptions.push(t);
+                const i = this.subscriptions;
+                return {
+                  unsubscribe: () => {
+                    const r = i.indexOf(t);
+                    r !== -1 && i.splice(r, 1);
+                  },
+                };
               }
-              function J({ project: e, release: t, dsn: i, environment: r, origin: n } = {}) {
-                const { loggerService: s } = Y();
-                s && e && t && i && s.addClient(e, { release: t, dsn: i, environment: r, origin: n });
+              notify(t) {
+                for (const i of this.subscriptions) i(t);
               }
-              class l {
-                constructor(t) {
-                  (this.subscriptions = []), (this.subscriptions = []), t && this.subscribe(t);
-                }
-                subscribe(t) {
-                  this.subscriptions.push(t);
-                  const i = this.subscriptions;
-                  return {
-                    unsubscribe: () => {
-                      const r = i.indexOf(t);
-                      r !== -1 && i.splice(r, 1);
-                    },
-                  };
-                }
-                notify(t) {
-                  for (const i of this.subscriptions) i(t);
-                }
+            }
+            const o = new l();
+            function y(e) {
+              const t = e,
+                i = window.devicePixelRatio || 1,
+                r =
+                  t.webkitBackingStorePixelRatio ||
+                  t.mozBackingStorePixelRatio ||
+                  t.msBackingStorePixelRatio ||
+                  t.oBackingStorePixelRatio ||
+                  t.backingStorePixelRatio ||
+                  1;
+              return i / r;
+            }
+            function z(e, t, i, r) {
+              const n = y(t);
+              (e.width = i * n),
+                (e.height = r * n),
+                (e.style.width = i + 'px'),
+                (e.style.height = r + 'px'),
+                t.setTransform(n, 0, 0, n, 0, 0);
+            }
+            let T = 0;
+            class v {
+              constructor() {
+                (this.updateables = []),
+                  (this.drawables = []),
+                  (this.byId = {}),
+                  (this.cleaned = !1),
+                  (this.initied = !1);
               }
-              const o = new l();
-              function m(e) {
-                const t = e,
-                  i = window.devicePixelRatio || 1,
-                  r =
-                    t.webkitBackingStorePixelRatio ||
-                    t.mozBackingStorePixelRatio ||
-                    t.msBackingStorePixelRatio ||
-                    t.oBackingStorePixelRatio ||
-                    t.backingStorePixelRatio ||
-                    1;
-                return i / r;
+              init(t) {
+                if (!t) {
+                  console.error('No element was provided');
+                  return;
+                }
+                if (this.initied) {
+                  console.error("You can't init twice");
+                  return;
+                }
+                (this.initied = !0),
+                  (this.containerElement = t),
+                  (this.canvasElement = document.createElement('canvas')),
+                  (this.canvasElement.style.transition = 'opacity 0.15s linear, transform 0.15s linear'),
+                  (this.canvasElement.style.opacity = '1'),
+                  (this.canvasElement.style.transformOrigin = 'center'),
+                  (this.canvasElement.style.transform = 'scale(1)');
+                const i = t.getBoundingClientRect();
+                t.appendChild(this.canvasElement),
+                  (this.ctx = this.canvasElement.getContext('2d')),
+                  this.updateResolution(),
+                  (this.width = i.width),
+                  (this.height = i.height),
+                  (this.resizeObserver = new ResizeObserver(() => {
+                    this.updateResolution();
+                  })),
+                  this.resizeObserver.observe(t),
+                  (this.lastFrameTime = Date.now()),
+                  this.callNextDrawFrame();
               }
-              function S(e, t, i, r) {
-                const n = m(t);
-                (e.width = i * n),
-                  (e.height = r * n),
-                  (e.style.width = i + 'px'),
-                  (e.style.height = r + 'px'),
-                  t.setTransform(n, 0, 0, n, 0, 0);
+              updateResolution() {
+                const t = this.containerElement.getBoundingClientRect();
+                z(this.canvasElement, this.ctx, t.width, t.height), (this.width = t.width), (this.height = t.height);
               }
-              let T = 0;
-              class v {
-                constructor() {
-                  (this.updateables = []),
-                    (this.drawables = []),
-                    (this.byId = {}),
-                    (this.cleaned = !1),
-                    (this.initied = !1);
-                }
-                init(t) {
-                  if (!t) {
-                    console.error('No element was provided');
-                    return;
-                  }
-                  if (this.initied) {
-                    console.error("You can't init twice");
-                    return;
-                  }
-                  (this.initied = !0),
-                    (this.containerElement = t),
-                    (this.canvasElement = document.createElement('canvas')),
-                    (this.canvasElement.style.transition = 'opacity 0.15s linear, transform 0.15s linear'),
-                    (this.canvasElement.style.opacity = '1'),
-                    (this.canvasElement.style.transformOrigin = 'center'),
-                    (this.canvasElement.style.transform = 'scale(1)');
-                  const i = t.getBoundingClientRect();
-                  t.appendChild(this.canvasElement),
-                    (this.ctx = this.canvasElement.getContext('2d')),
-                    this.updateResolution(),
-                    (this.width = i.width),
-                    (this.height = i.height),
-                    (this.resizeObserver = new ResizeObserver(() => {
-                      this.updateResolution();
-                    })),
-                    this.resizeObserver.observe(t),
-                    (this.lastFrameTime = Date.now()),
-                    this.callNextDrawFrame();
-                }
-                updateResolution() {
-                  const t = this.containerElement.getBoundingClientRect();
-                  S(this.canvasElement, this.ctx, t.width, t.height), (this.width = t.width), (this.height = t.height);
-                }
-                callNextDrawFrame() {
-                  this.requestedAnimationFrame = requestAnimationFrame(() => {
-                    this.cleaned ||
+              callNextDrawFrame() {
+                let t;
+                this.requestedAnimationFrame = requestAnimationFrame(() => {
+                  this.cleaned ||
+                    ((!t || performance.now() - t < 10) &&
                       (this.ctx.clearRect(0, 0, this.width, this.height),
                       this.updateFrame(),
                       this.drawFrame(),
-                      this.callNextDrawFrame());
-                  });
-                }
-                clean(t) {
-                  if (this.cleaned) {
-                    console.error("You can't clean twice");
-                    return;
-                  }
-                  (this.cleaned = !0),
-                    this.canvasElement.addEventListener(
-                      'transitionend',
-                      () => {
-                        this.canvasElement?.remove(), t?.();
-                      },
-                      { once: !0 }
-                    ),
-                    (this.canvasElement.style.opacity = '0'),
-                    (this.canvasElement.style.transform = 'scale(0)'),
-                    this.resizeObserver?.disconnect();
-                  for (const i of this.updateables) i.onDeleted();
-                  this.requestedAnimationFrame !== void 0 && cancelAnimationFrame(this.requestedAnimationFrame);
-                }
-                remove(t) {
-                  if (t.deleted) return;
-                  (t.deleted = !0), t.onDeleted(), delete this.byId[t.id];
-                  for (const n of t.destroyWithMe) this.remove(n);
-                  const i = this.drawables.indexOf(t),
-                    r = this.updateables.indexOf(t);
-                  r !== -1 && this.updateables.splice(r, 1), i !== -1 && this.drawables.splice(i, 1);
-                }
-                addElement(t) {
-                  return (
-                    (this.byId[t.id || `updatable-${T++}`] = t),
-                    this.updateables.push(t),
-                    'drawable' in t && this.drawables.push(t),
-                    (t.controller = this),
-                    t.onCreated(),
-                    t
-                  );
-                }
-                updateFrame() {
-                  const t = (Date.now() - this.lastFrameTime) / 16.666666666666668;
-                  for (const i of this.updateables)
-                    if (!i.deleted) {
-                      (i.controller = this), (i.deltaTime = t), (i.updated = !0);
-                      try {
-                        i.update();
-                      } catch (r) {
-                        console.error('Update failed', i, r);
-                        continue;
-                      }
-                    }
-                  this.lastFrameTime = Date.now();
-                }
-                drawFrame() {
-                  for (const t of this.drawables)
-                    if (!t.deleted && t.updated) {
-                      this.ctx.save();
-                      try {
-                        t.draw(this.ctx);
-                      } catch (i) {
-                        console.error('Draw failed', t, i);
-                        continue;
-                      }
-                      this.ctx.restore();
-                    }
-                }
-              }
-              class p {
-                constructor() {
-                  (this.deleted = !1), (this.updated = !1), (this.destroyWithMe = []), (this.deltaTime = 0);
-                }
-                onCreated() {}
-                onDeleted() {}
-                addElementToDestroyWithMe(t) {
-                  return this.controller.addElement(t), this.destroyWithMe.push(t), t;
-                }
-              }
-              class R extends p {
-                constructor(t, i, r, n) {
-                  super(), (this.drawable = !0), (this.x = t), (this.y = i), (this.width = r), (this.height = n);
-                }
-              }
-              let E = !1;
-              function M(e) {
-                E = e;
-              }
-              function C() {
-                return E;
-              }
-              const G = {
-                  defaultWidth: 50,
-                  defaultHeight: 50,
-                  paths: [
-                    {
-                      path: new Path2D(
-                        'M25,50c13.81,0,25-11.19,25-25C50,11.19,38.81,0,25,0C11.19,0,0,11.19,0,25C0,38.81,11.19,50,25,50z'
-                      ),
-                      fill: '#C9E6FC',
-                    },
-                    {
-                      path: new Path2D(`M25,66.15c9.37,0,16.96-7.59,16.96-16.96c0-9.37-7.59-16.96-16.96-16.96c-9.37,0-16.96,7.59-16.96,16.96
-        C8.04,58.56,15.63,66.15,25,66.15z`),
-                      fill: '#6C6CFF',
-                    },
-                    {
-                      path: new Path2D(`M32.25,35.87c0-3.84-3.1-3.26-6.96-3.26c-3.87,0-6.97-0.61-6.97,3.26s3.1,6.97,6.97,6.97
-      C29.16,42.83,32.25,39.7,32.25,35.87z`),
-                      fill: '#FFFFFF',
-                    },
-                    {
-                      path: new Path2D(`M25,8.58c-4.14,0-7.5,3.36-7.5,7.5v5.55c0,4.14,3.36,7.5,7.5,7.5s7.5-3.36,7.5-7.5v-5.55
-		C32.51,11.91,29.14,8.58,25,8.58z`),
-                      fill: '#FB855F',
-                    },
-                    {
-                      path: new Path2D(`M24.85,37.79h0.37c1.75,0,3.16-1.41,3.16-3.16v-7.6c0-1.75-1.41-3.16-3.16-3.16h-0.37
-c-1.75,0-3.16,1.41-3.16,3.16v7.6C21.69,36.37,23.1,37.79,24.85,37.79z`),
-                      fill: '#FB855F',
-                    },
-                    {
-                      path: new Path2D(
-                        'M25.02,13.33c1.84,0,3.33-1.49,3.33-3.33s-1.49-3.33-3.33-3.33s-3.33,1.49-3.33,3.33S23.18,13.33,25.02,13.33z'
-                      ),
-                      fill: '#0F1048',
-                    },
-                    {
-                      path: new Path2D(`M30.96,15.21c2.36,0,4.27-1.91,4.27-4.27s-1.91-4.27-4.27-4.27c-2.36,0-4.27,1.91-4.27,4.27
-		S28.6,15.21,30.96,15.21z`),
-                      fill: '#0F1048',
-                    },
-                    {
-                      path: new Path2D(`M17.8,14.03c0.4,0.2,0.87,0.3,1.38,0.3c1.85,0,3.33-1.48,3.33-3.33c0-0.64-0.2-1.24-0.5-1.78
-		C19.95,10.09,18.41,11.84,17.8,14.03z`),
-                      fill: '#0F1048',
-                    },
-                  ],
-                },
-                Z = {
-                  defaultHeight: 50,
-                  defaultWidth: 50,
-                  paths: [
-                    {
-                      path: new Path2D(`M47.21,35.31V14.69c0-1.56-0.83-2.99-2.18-3.77L27.18,0.61c-1.35-0.78-3.01-0.78-4.36,0L4.97,10.92
-            c-1.35,0.78-2.18,2.22-2.18,3.77v20.62c0,1.56,0.83,2.99,2.18,3.77l17.86,10.31c1.35,0.78,3.01,0.78,4.36,0l17.86-10.31
-            C46.38,38.3,47.21,36.87,47.21,35.31z`),
-                    },
-                  ],
-                  move: { x: 3, y: 0 },
-                },
-                A = {
-                  initialShapeColor: '#6C6CFF',
-                  sideCircleColor: '#FB265D',
-                  cubeColor: '#6C6CFF',
-                  cubeSecondColor: '#FFCC02',
-                  personColor: 'rgb(195 232 255)',
-                  hexagonColor: 'rgb(108 108 255)',
-                  initialShapeSecondColor: '#FDAB3D',
-                  initialShapeThirdColor: '#00CA72',
-                  initialShapeWidthBezier: [0.2, 0, 0.3, 1.75],
-                  initialShapeDownBezier: [0.2, 0, 0.3, 1.45],
-                  personDownBezier: [0.2, 0, 0.2, 1.5],
-                  cubeDownBezier: [0.2, 0, 0.3, 1.35],
-                  cubeRightBezier: [0.2, 0, 0.3, 1.45],
-                  hexagonRightBezier: [0.2, 0, 0.3, 1.45],
-                  initialShapeLeftBezier: [0, 0, 0.2, 1.8],
-                  sideCircleLeftBezier: [0.2, 0, 0.3, 1.45],
-                  personRightBezier: [0.2, 0, 0.3, 1.45],
-                  centerEndBezier: [0.2, 0, 0.45, 1],
-                  centerizedUntil: 0.2,
-                  centerizedSizeUntil: 0.25,
-                },
-                W = {
-                  initialShape: {
-                    color: '$initialShapeColor',
-                    isVisible: !0,
-                    gridX: 0,
-                    gridY: -1,
-                    gridWidth: 1,
-                    gridHeight: 1,
-                    radius: 1,
-                  },
-                  sideCircle: {
-                    color: '$sideCircleColor',
-                    isVisible: !1,
-                    gridX: 2,
-                    gridY: 0,
-                    gridWidth: 1,
-                    gridHeight: 1,
-                    radius: 1,
-                  },
-                  cube: {
-                    color: '$cubeColor',
-                    isVisible: !1,
-                    gridX: 0,
-                    gridY: -2,
-                    gridWidth: 1,
-                    gridHeight: 1,
-                    radius: 0.15,
-                  },
-                  person: {
-                    color: '$personColor',
-                    isVisible: !1,
-                    gridX: 1,
-                    gridY: -2,
-                    gridWidth: 1,
-                    gridHeight: 1,
-                    radius: 1,
-                    svg: G,
-                    clipCircle: !0,
-                  },
-                  hexagon: {
-                    color: '$hexagonColor',
-                    isVisible: !1,
-                    gridX: -1,
-                    gridY: -1,
-                    gridWidth: 1,
-                    gridHeight: 1,
-                    radius: 1,
-                    svg: Z,
-                  },
-                },
-                ee = {
-                  type: 'series',
-                  values: [
-                    {
-                      type: 'oneEase',
-                      duration: 300,
-                      delay: 160,
-                      targetValues: [
-                        {
-                          by: 'initialShape',
-                          key: 'gridWidth',
-                          value: 3,
-                          easeType: 'bezier',
-                          bezier: '$initialShapeWidthBezier',
-                        },
-                      ],
-                    },
-                    {
-                      type: 'parallel',
-                      values: [
-                        {
-                          type: 'oneEase',
-                          duration: 300,
-                          delay: 120,
-                          setOnStart: { person: { isVisible: !0 } },
-                          targetValues: [
-                            {
-                              by: 'initialShape',
-                              key: 'gridY',
-                              value: 0,
-                              easeType: 'bezier',
-                              bezier: '$initialShapeDownBezier',
-                            },
-                            { by: 'initialShape', key: 'radius', value: 0.15 },
-                            { by: 'initialShape', key: 'color', value: '$initialShapeSecondColor' },
-                            { by: 'person', key: 'gridY', value: -1, easeType: 'bezier', bezier: '$personDownBezier' },
-                          ],
-                        },
-                        {
-                          type: 'oneEase',
-                          duration: 300,
-                          delay: 240,
-                          setOnStart: { cube: { isVisible: !0 } },
-                          targetValues: [
-                            { by: 'cube', key: 'gridY', value: -1, easeType: 'bezier', bezier: '$cubeDownBezier' },
-                          ],
-                        },
-                      ],
-                    },
-                    {
-                      type: 'parallel',
-                      values: [
-                        {
-                          type: 'oneEase',
-                          duration: 300,
-                          delay: 120,
-                          targetValues: [
-                            {
-                              by: 'initialShape',
-                              key: 'gridX',
-                              value: -1,
-                              easeType: 'bezier',
-                              bezier: '$initialShapeLeftBezier',
-                            },
-                            { by: 'initialShape', key: 'color', value: '$initialShapeThirdColor' },
-                            { by: 'person', key: 'gridX', value: 2, easeType: 'bezier', bezier: '$personRightBezier' },
-                          ],
-                        },
-                        {
-                          type: 'oneEase',
-                          duration: 300,
-                          delay: 200,
-                          targetValues: [
-                            { by: 'cube', key: 'gridX', value: 1, easeType: 'bezier', bezier: '$cubeRightBezier' },
-                          ],
-                        },
-                        {
-                          setOnStart: { hexagon: { isVisible: !0 }, sideCircle: { isVisible: !0 } },
-                          type: 'oneEase',
-                          duration: 300,
-                          delay: 260,
-                          targetValues: [
-                            { by: 'cube', key: 'color', value: '$cubeSecondColor' },
-                            {
-                              by: 'hexagon',
-                              key: 'gridX',
-                              value: 0,
-                              easeType: 'bezier',
-                              bezier: '$hexagonRightBezier',
-                            },
-                            {
-                              by: 'sideCircle',
-                              key: 'gridX',
-                              value: 1,
-                              easeType: 'bezier',
-                              bezier: '$sideCircleLeftBezier',
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    { type: 'oneEase', delay: 0, duration: 200, targetValues: [] },
-                    {
-                      type: 'parallel',
-                      values: [
-                        {
-                          type: 'oneEase',
-                          delay: 0,
-                          duration: 120,
-                          targetValues: [
-                            {
-                              by: 'initialShape',
-                              key: 'centerized',
-                              value: '$centerizedUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                            {
-                              by: 'sideCircle',
-                              key: 'centerized',
-                              value: '$centerizedUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                            {
-                              by: 'cube',
-                              key: 'centerized',
-                              value: '$centerizedUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                            {
-                              by: 'person',
-                              key: 'centerized',
-                              value: '$centerizedUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                            {
-                              by: 'hexagon',
-                              key: 'centerized',
-                              value: '$centerizedUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                          ],
-                        },
-                        {
-                          type: 'oneEase',
-                          delay: 0,
-                          duration: 120,
-                          targetValues: [
-                            {
-                              by: 'initialShape',
-                              key: 'centerizedSize',
-                              value: '$centerizedSizeUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                            {
-                              by: 'sideCircle',
-                              key: 'centerizedSize',
-                              value: '$centerizedSizeUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                            {
-                              by: 'cube',
-                              key: 'centerizedSize',
-                              value: '$centerizedSizeUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                            {
-                              by: 'person',
-                              key: 'centerizedSize',
-                              value: '$centerizedSizeUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                            {
-                              by: 'hexagon',
-                              key: 'centerizedSize',
-                              value: '$centerizedSizeUntil',
-                              easeType: 'bezier',
-                              bezier: '$centerEndBezier',
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                };
-              var ce = y(198),
-                de = y.n(ce);
-              const D = function (e) {
-                  return function (t) {
-                    return Math.pow(t, e);
-                  };
-                },
-                P = function (e) {
-                  return function (t) {
-                    return 1 - Math.abs(Math.pow(t - 1, e));
-                  };
-                },
-                H = function (e) {
-                  return function (t) {
-                    return t < 0.5 ? D(e)(t * 2) / 2 : P(e)(t * 2 - 1) / 2 + 0.5;
-                  };
-                },
-                f = function (e) {
-                  return function (t, i, r) {
-                    const n = e(t);
-                    return i + (r - i) * n;
-                  };
-                },
-                F = {
-                  linear: f(e => e),
-                  easeInQuad: f(D(2)),
-                  easeOutQuad: f(P(2)),
-                  easeInOutQuad: f(H(2)),
-                  easeInCubic: f(D(3)),
-                  easeOutCubic: f(P(3)),
-                  easeInOutCubic: f(H(3)),
-                  easeInQuart: f(D(4)),
-                  easeOutQuart: f(P(4)),
-                  easeInOutQuart: f(H(4)),
-                  easeInQuint: f(D(5)),
-                  easeOutQuint: f(P(5)),
-                  easeInOutQuint: f(H(5)),
-                  easeInElastic: f(function (e) {
-                    return (0.04 - 0.04 / e) * Math.sin(25 * e) + 1;
-                  }),
-                  easeOutElastic: f(function (e) {
-                    return ((0.04 * e) / --e) * Math.sin(25 * e);
-                  }),
-                  easeInOutElastic: f(function (e) {
-                    return (e -= 0.5) < 0
-                      ? (0.02 + 0.01 / e) * Math.sin(50 * e)
-                      : (0.02 - 0.01 / e) * Math.sin(50 * e) + 1;
-                  }),
-                  easeInSin: f(function (e) {
-                    return 1 + Math.sin((Math.PI / 2) * e - Math.PI / 2);
-                  }),
-                  easeOutSin: f(function (e) {
-                    return Math.sin((Math.PI / 2) * e);
-                  }),
-                  easeInOutSin: f(function (e) {
-                    return (1 + Math.sin(Math.PI * e - Math.PI / 2)) / 2;
-                  }),
-                  bezier: (e, t, i, r) => n => de()(e, t, i, r)(n),
-                };
-              class ue extends p {
-                constructor(t, i, r, { onStart: n, onFinish: s } = {}) {
-                  super(),
-                    (this.started = !1),
-                    (this.delay = t),
-                    (this.duration = i),
-                    (this.startedAt = Date.now()),
-                    (this.updateAnimation = r),
-                    (this.onFinish = new l(s)),
-                    (this.onStart = new l(n));
-                }
-                onCreated() {
-                  this.startedAt = Date.now();
-                }
-                update() {
-                  const t = C() ? 1 : (Date.now() - this.startedAt - this.delay) / this.duration;
-                  t < 0 ||
-                    (this.started || ((this.started = !0), this.onStart.notify(void 0)),
-                    this.updateAnimation(Math.min(1, t)),
-                    t >= 1 && (this.controller.remove(this), this.onFinish.notify(void 0)));
-                }
-              }
-              const te = { color: (e, t, i) => i, number: F.linear };
-              class pe extends ue {
-                constructor(t, i, r, n) {
-                  super(t, i, s => {
-                    this.targetValueWithStartValues && this.updateValues(s);
-                  }),
-                    (this.targetValues = r),
-                    (this.setOnStart = n);
-                }
-                getByActual(t) {
-                  return typeof t == 'string' ? this.controller.byId[t] : t;
-                }
-                updateValues(t) {
-                  for (const i of this.targetValueWithStartValues) {
-                    const r = i.easeType(t, 0, 1),
-                      n = i.fromValueToValueByType(r, i.startValue, i.value);
-                    i.by[i.key] = n;
-                  }
-                }
-                setStartValue() {
-                  this.targetValueWithStartValues = this.targetValues.map(t => ({
-                    ...t,
-                    startValue: t.startValue || t.by[t.key],
-                    easeType: t.easeType || F.linear,
-                    fromValueToValueByType:
-                      t.fromValueToValueByType || (typeof t.value == 'string' ? te.color : te.number),
-                  }));
-                }
-                onCreated() {
-                  super.onCreated(),
-                    this.onStart.subscribe(() => {
-                      if (this.setOnStart) for (const t of this.setOnStart) t.by[t.key] = t.value;
-                      this.setStartValue();
-                    });
-                }
-              }
-              class fe extends p {
-                constructor(t, { onFinish: i } = {}) {
-                  super(), (this.runs = t), (this.currentRun = 0), (this.onFinish = new l(i));
-                }
-                nextRun() {
-                  if (!this.runs[this.currentRun]) {
-                    this.onFinish.notify(void 0), this.controller.remove(this);
-                    return;
-                  }
-                  this.addElementToDestroyWithMe(this.runs[this.currentRun]),
-                    this.runs[this.currentRun].onFinish.subscribe(() => {
-                      this.nextRun();
-                    }),
-                    this.currentRun++;
-                }
-                onCreated() {
-                  this.nextRun();
-                }
-                update() {}
-              }
-              class be extends p {
-                constructor(t, { onFinish: i } = {}) {
-                  super(), (this.runs = t), (this.onFinish = new l(i));
-                }
-                onCreated() {
-                  const t = new Set();
-                  for (const i of this.runs)
-                    this.addElementToDestroyWithMe(i),
-                      i.onFinish.subscribe(() => {
-                        t.add(i),
-                          t.size === this.runs.length && (this.onFinish.notify(void 0), this.controller.remove(this));
-                      });
-                }
-                update() {}
-              }
-              function ie(e, t) {
-                if (!e.byId[t]) throw new Error(`no such id ${t}`);
-                return e.byId[t];
-              }
-              const ge = {
-                oneEase: (e, t, i) =>
-                  new pe(
-                    t.delay,
-                    t.duration,
-                    t.targetValues.map(r => {
-                      const n = r.easeType === 'bezier',
-                        [s, a, h, d] = b(r.bezier, i) || [0.2, 0, 0.3, 1.45],
-                        u = n ? F.bezier(s, a, h, d) : r.easeType ? F[r.easeType] : void 0;
-                      return { ...r, value: b(r.value, i), by: ie(e, r.by), easeType: u };
-                    }),
-                    t.setOnStart
-                      ? Object.entries(t.setOnStart)
-                          .map(([r, n]) => Object.entries(n).map(([s, a]) => ({ by: ie(e, r), key: s, value: a })))
-                          .flat()
-                      : void 0
-                  ),
-                series: (e, t, i) => new fe(t.values.map(r => j(e, r, i))),
-                parallel: (e, t, i) => new be(t.values.map(r => j(e, r, i))),
-              };
-              function j(e, t, i) {
-                return ge[t.type](e, t, i);
-              }
-              function b(e, t) {
-                if (!t || typeof e > 'u' || typeof e != 'string') return e;
-                if (e.startsWith('$')) {
-                  const i = t[e.substring(1)];
-                  return typeof i > 'u' ? e : i;
-                }
-                return e;
-              }
-              const V = 0.5,
-                Je = (e, t, i, r, n) => {
-                  const s = e.lineWidth * V;
-                  e.strokeRect(Math.round(t) + s, Math.round(i) + s, r - e.lineWidth, n - e.lineWidth);
-                },
-                Ge = (e, t, i, r, n) => {
-                  const s = e.lineWidth * V,
-                    a = Math.round(t) + s,
-                    h = Math.round(i) + s,
-                    d = r - e.lineWidth,
-                    u = n - e.lineWidth;
-                  e.beginPath(),
-                    e.moveTo(a + d, h),
-                    e.lineTo(a, h),
-                    e.moveTo(a + d, h + u),
-                    e.lineTo(a, h + u),
-                    e.stroke();
-                },
-                Ze = (e, t, i, r, n) => {
-                  const s = e.lineWidth * V,
-                    a = Math.round(t) + s,
-                    h = Math.round(i) + s,
-                    d = r - e.lineWidth,
-                    u = n - e.lineWidth;
-                  e.beginPath(),
-                    e.moveTo(a + d, h),
-                    e.lineTo(a, h),
-                    e.lineTo(a, h + u),
-                    e.lineTo(a + d, h + u),
-                    e.stroke();
-                },
-                ye = (e, t, i, r, n, s, a) => {
-                  let h = { upperLeft: 0, upperRight: 0, lowerLeft: 0, lowerRight: 0 };
-                  if (typeof a == 'object') {
-                    const d = Object.keys(a);
-                    for (const u of d) h[u] = a[u] || 0;
-                  } else h = { upperLeft: a, upperRight: a, lowerLeft: a, lowerRight: a };
-                  r === n && typeof a == 'number' && Math.round(a) >= r / 2
-                    ? (e.beginPath(), e.arc(t + r / 2, i + n / 2, r / 2, 0, Math.PI * 2), e.closePath())
-                    : me(
-                        e,
-                        Math.round(t) + (s ? e.lineWidth * V : 0),
-                        h,
-                        Math.round(i) + (s ? e.lineWidth * V : 0),
-                        Math.round(r) - (s ? e.lineWidth : 0),
-                        Math.round(n) - (s ? e.lineWidth : 0)
-                      ),
-                    s ? e.stroke() : e.fill();
-                },
-                Ke = (e, t, i, r, n, s, a) => {
-                  let h = { upperLeft: 0, upperRight: 0, lowerLeft: 0, lowerRight: 0 };
-                  if (typeof a == 'object') {
-                    const d = Object.keys(a);
-                    for (const u of d) h[u] = a[u] || 0;
-                  } else h = { upperLeft: a, upperRight: a, lowerLeft: a, lowerRight: a };
-                  ze(
-                    e,
-                    Math.round(t) + (s ? e.lineWidth * V : 0),
-                    h,
-                    Math.round(i) + (s ? e.lineWidth * V : 0),
-                    Math.round(r) - (s ? e.lineWidth : 0),
-                    Math.round(n) - (s ? e.lineWidth : 0)
-                  ),
-                    s || (e.lineTo(t, i + n), e.closePath()),
-                    s ? e.stroke() : e.fill();
-                };
-              function me(e, t, i, r, n, s) {
-                e.beginPath(),
-                  e.moveTo(t + i.upperLeft, r),
-                  e.lineTo(t + n - i.upperRight, r),
-                  e.quadraticCurveTo(t + n, r, t + n, r + i.upperRight),
-                  e.lineTo(t + n, r + s - i.lowerRight),
-                  e.quadraticCurveTo(t + n, r + s, t + n - i.lowerRight, r + s),
-                  e.lineTo(t + i.lowerLeft, r + s),
-                  e.quadraticCurveTo(t, r + s, t, r + s - i.lowerLeft),
-                  e.lineTo(t, r + i.upperLeft),
-                  e.quadraticCurveTo(t, r, t + i.upperLeft, r),
-                  e.closePath();
-              }
-              function ze(e, t, i, r, n, s) {
-                e.beginPath(),
-                  e.moveTo(t, r),
-                  e.lineTo(t, r + s - i.lowerLeft),
-                  e.quadraticCurveTo(t, r + s, t + i.lowerLeft, r + s);
-              }
-              const re = (e, t, i, r, n, s, a = 0) => {
-                e.save(),
-                  e.translate(i, r),
-                  e.scale(n / t.defaultWidth, s / t.defaultHeight),
-                  a && (e.translate(n / 2, s / 2), e.rotate((a * Math.PI) / 180), e.translate(-n / 2, -s / 2)),
-                  e.translate(t.move?.x || 0, t.move?.y || 0);
-                const h = e.fillStyle;
-                for (const { path: d, fill: u } of t.paths)
-                  e.save(),
-                    (e.fillStyle = u || h),
-                    t.clip && e.clip(d, 'evenodd'),
-                    t.stroke ? e.stroke(d) : e.fill(d),
-                    e.restore();
-                e.restore();
-              };
-              class Se extends R {
-                constructor(t, i, r, n, s, a, h, d, u, le, Qe, Xe = !1) {
-                  super(0, 0, 100, 100),
-                    (this.id = t),
-                    (this.gridSize = i),
-                    (this.gridSpace = r),
-                    (this.gridWidth = d),
-                    (this.gridHeight = u),
-                    (this.initialWidth = d),
-                    (this.initialHeight = u),
-                    (this.isVisible = s),
-                    (this.initialIsVisible = s),
-                    (this.color = n),
-                    (this.initialColor = n),
-                    (this.gridX = a),
-                    (this.gridY = h),
-                    (this.radius = le),
-                    (this.initialgridX = a),
-                    (this.initialgridY = h),
-                    (this.initialRadius = le),
-                    (this.svg = Qe),
-                    (this.centerized = 0),
-                    (this.centerizedSize = 0),
-                    (this.clipCircle = Xe);
-                }
-                onCreated() {}
-                reset() {
-                  (this.isVisible = this.initialIsVisible),
-                    (this.color = this.initialColor),
-                    (this.gridWidth = this.initialWidth),
-                    (this.gridHeight = this.initialHeight),
-                    (this.radius = this.initialRadius),
-                    (this.gridX = this.initialgridX),
-                    (this.gridY = this.initialgridY),
-                    (this.centerized = 0),
-                    (this.centerizedSize = 0),
-                    this.update();
-                }
-                update() {
-                  (this.width = F.linear(
-                    this.centerizedSize,
-                    this.gridWidth * this.gridSize + (Math.abs(this.gridWidth) - 1) * this.gridSpace,
-                    0
-                  )),
-                    (this.height = F.linear(
-                      this.centerizedSize,
-                      this.gridHeight * this.gridSize + (Math.abs(this.gridHeight) - 1) * this.gridSpace,
-                      0
-                    )),
-                    (this.x =
-                      F.linear(
-                        this.centerized,
-                        Math.round(
-                          this.controller.width / 2 +
-                            this.gridX * this.gridSize +
-                            this.gridX * this.gridSpace -
-                            Math.round(this.width / 2)
-                        ),
-                        this.controller.width / 2 - this.gridSize
-                      ) -
-                      this.gridSize / 1.5),
-                    (this.y =
-                      F.linear(
-                        this.centerized,
-                        Math.round(
-                          this.controller.height / 2 +
-                            this.gridY * this.gridSize +
-                            this.gridY * this.gridSpace -
-                            this.height / 2
-                        ),
-                        this.controller.height / 2 - this.gridSize / 2
-                      ) +
-                      this.gridSize / 5);
-                }
-                draw(t) {
-                  this.isVisible &&
-                    ((t.fillStyle = this.color),
-                    this.svg
-                      ? (t.save(),
-                        this.clipCircle &&
-                          (t.beginPath(),
-                          t.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2),
-                          t.closePath(),
-                          t.clip()),
-                        re(t, this.svg, this.x, this.y, this.width, this.height),
-                        t.restore())
-                      : ye(t, this.x, this.y, this.width, this.height, !1, this.radius * (this.gridSize / 2)));
-                }
-              }
-              class ve extends p {
-                constructor(t, i, r, n, s, a) {
-                  super(),
-                    (this.onLogoAnimationFinished = r),
-                    (this.gridSize = t),
-                    (this.gridSpace = i),
-                    (this.shapes = []),
-                    (this.animationJson = n || ee),
-                    (this.initialShapes = s || W),
-                    (this.animationVariables = a || A);
-                }
-                onCreated() {
-                  const t = this.gridSize,
-                    i = this.gridSpace;
-                  this.shapes = [];
-                  for (const [r, n] of Object.entries(this.initialShapes))
-                    this.shapes.push(
-                      this.addElementToDestroyWithMe(
-                        new Se(
-                          r,
-                          t,
-                          i,
-                          b(n.color, this.animationVariables),
-                          b(n.isVisible, this.animationVariables),
-                          b(n.gridX, this.animationVariables),
-                          b(n.gridY, this.animationVariables),
-                          b(n.gridWidth, this.animationVariables),
-                          b(n.gridHeight, this.animationVariables),
-                          b(n.radius, this.animationVariables),
-                          b(n.svg, this.animationVariables),
-                          b(n.clipCircle, this.animationVariables)
-                        )
-                      )
-                    );
-                  this.animation();
-                }
-                animation() {
-                  this.addElementToDestroyWithMe(
-                    j(this.controller, this.animationJson, this.animationVariables)
-                  ).onFinish.subscribe(() => {
-                    if ((this.onLogoAnimationFinished?.(), !C())) {
-                      for (const i of this.shapes) i.reset();
-                      this.deleted || this.animation();
-                    }
-                  });
-                }
-                update() {}
-              }
-              const ne = {
-                  defaultWidth: 50,
-                  defaultHeight: 50,
-                  paths: [
-                    {
-                      path: new Path2D(`M10.42,49.96c-3.86,0-7.42-2.01-9.29-5.25c-1.87-3.23-1.76-7.19,0.29-10.32L20.54,5.17
-        c1.94-3.24,5.57-5.2,9.46-5.11c3.89,0.09,7.43,2.21,9.21,5.53c1.78,3.32,1.52,7.3-0.68,10.38L19.41,45.19
-        C17.47,48.15,14.07,49.96,10.42,49.96L10.42,49.96z`),
-                    },
-                  ],
-                },
-                se = {
-                  type: 'parallel',
-                  values: [
-                    {
-                      type: 'oneEase',
-                      duration: 360,
-                      delay: 0,
-                      targetValues: [
-                        {
-                          by: 'leftLetter',
-                          key: 'width',
-                          value: '$letterFinalSize',
-                          easeType: 'bezier',
-                          bezier: '$bezier',
-                        },
-                        {
-                          by: 'leftLetter',
-                          key: 'height',
-                          value: '$letterFinalSize',
-                          easeType: 'bezier',
-                          bezier: '$bezier',
-                        },
-                      ],
-                    },
-                    {
-                      type: 'oneEase',
-                      duration: 320,
-                      delay: 40,
-                      targetValues: [
-                        {
-                          by: 'middle',
-                          key: 'width',
-                          value: '$letterFinalSize',
-                          easeType: 'bezier',
-                          bezier: '$bezier',
-                        },
-                        {
-                          by: 'middle',
-                          key: 'height',
-                          value: '$letterFinalSize',
-                          easeType: 'bezier',
-                          bezier: '$bezier',
-                        },
-                      ],
-                      setOnStart: { middle: { isVisible: !0 } },
-                    },
-                    {
-                      type: 'oneEase',
-                      duration: 320,
-                      delay: 80,
-                      targetValues: [
-                        {
-                          by: 'right',
-                          key: 'width',
-                          value: '$circleFinalSize',
-                          easeType: 'bezier',
-                          bezier: '$circleBezier',
-                        },
-                        {
-                          by: 'right',
-                          key: 'height',
-                          value: '$circleFinalSize',
-                          easeType: 'bezier',
-                          bezier: '$circleBezier',
-                        },
-                      ],
-                      setOnStart: { right: { isVisible: !0 } },
-                    },
-                    { type: 'oneEase', duration: 300, delay: 1e3, targetValues: [] },
-                  ],
-                },
-                ae = {
-                  leftLetter: {
-                    svg: ne,
-                    relativeX: -32,
-                    relativeY: '$letterY',
-                    width: '$letterInitialSize',
-                    height: '$letterInitialSize',
-                    isVisible: !0,
-                    color: '$leftLetterColor',
-                  },
-                  middle: {
-                    svg: ne,
-                    relativeX: 0,
-                    relativeY: '$letterY',
-                    width: '$letterInitialSize',
-                    height: '$letterInitialSize',
-                    isVisible: !1,
-                    color: '$middleLetterColor',
-                  },
-                  right: {
-                    circle: !0,
-                    relativeX: 18,
-                    relativeY: '$circleY',
-                    width: '$circleInitialSize',
-                    height: '$circleInitialSize',
-                    isVisible: !1,
-                    color: '$rightLetterColor',
-                  },
-                },
-                oe = {
-                  bezier: [0.2, 0, 0.2, 1.65],
-                  circleBezier: [0.2, 0, 0.3, 1.65],
-                  leftLetterColor: '#FB265D',
-                  middleLetterColor: '#FFCC02',
-                  rightLetterColor: '#00CA72',
-                  letterY: -20,
-                  circleY: -6,
-                  letterInitialSize: 80,
-                  circleInitialSize: 40,
-                  letterFinalSize: 50,
-                  circleFinalSize: 22,
-                };
-              class we extends R {
-                constructor({
-                  id: t,
-                  relativeX: i,
-                  relativeY: r,
-                  color: n,
-                  circle: s = !1,
-                  svg: a,
-                  isVisible: h,
-                  width: d,
-                  height: u,
-                }) {
-                  super(0, 0, d, u),
-                    (this.id = t),
-                    (this.circle = s),
-                    (this.svg = a),
-                    (this.relativeX = i),
-                    (this.relativeY = r),
-                    (this.color = n),
-                    (this.isVisible = h);
-                }
-                update() {
-                  (this.x = this.controller.width / 2 + this.relativeX - this.width / 2),
-                    (this.y = this.controller.height / 2 + this.relativeY - this.height / 2);
-                }
-                draw(t) {
-                  this.isVisible &&
-                    ((t.fillStyle = this.color),
-                    this.svg
-                      ? re(t, this.svg, this.x, this.y, this.width, this.height)
-                      : this.circle &&
-                        (t.beginPath(),
-                        t.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, 2 * Math.PI),
-                        t.fill()));
-                }
-              }
-              class Ce extends p {
-                constructor(t, i, r, n) {
-                  super(),
-                    (this.onFinish = new l()),
-                    (this.onLogoAnimationFinished = t),
-                    (this.shapes = []),
-                    (this.animationJson = i || se),
-                    (this.initialShapes = r || ae),
-                    (this.animationVariables = n || oe);
-                }
-                onCreated() {
-                  this.shapes = [];
-                  for (const [t, i] of Object.entries(this.initialShapes))
-                    this.shapes.push(
-                      this.addElementToDestroyWithMe(
-                        new we({
-                          id: t,
-                          relativeX: b(i.relativeX, this.animationVariables),
-                          relativeY: b(i.relativeY, this.animationVariables),
-                          circle: b(i.circle, this.animationVariables),
-                          svg: b(i.svg, this.animationVariables),
-                          color: b(i.color, this.animationVariables),
-                          width: b(i.width, this.animationVariables),
-                          height: b(i.height, this.animationVariables),
-                          isVisible: b(i.isVisible, this.animationVariables),
-                        })
-                      )
-                    );
-                  this.animation();
-                }
-                animation() {
-                  this.addElementToDestroyWithMe(
-                    j(this.controller, this.animationJson, this.animationVariables)
-                  ).onFinish.subscribe(() => {
-                    this.onLogoAnimationFinished && this.onLogoAnimationFinished(), this.onFinish.notify(void 0);
-                  });
-                }
-                update() {}
-              }
-              class Te extends p {
-                constructor({
-                  letterLogoAnimation: t,
-                  gridLogoAnimation: i,
-                  gridInitialShapes: r,
-                  lettersShapes: n,
-                  gridVariables: s,
-                  lettersVariables: a,
-                  onFinish: h,
-                } = {}) {
-                  super(),
-                    (this.onFinish = new l()),
-                    (this.letterLogoAnimation = t),
-                    (this.gridLogoAnimation = i),
-                    (this.lettersShapes = n),
-                    (this.gridInitialShapes = r),
-                    (this.gridVariables = s),
-                    (this.lettersVariables = a),
-                    (this.onFinish = new l(h));
-                }
-                onCreated() {
-                  this.animate();
-                }
-                animate() {
-                  (this.lettersAnimation = new Ce(
-                    () => {
-                      C() ||
-                        (this.controller.remove(this.lettersAnimation), this.animate(), this.onFinish.notify(void 0));
-                    },
-                    this.letterLogoAnimation || se,
-                    this.lettersShapes || ae,
-                    this.lettersVariables || oe
-                  )),
-                    (this.logoGrid = new ve(
-                      50,
-                      6,
-                      () => {
-                        this.controller.remove(this.logoGrid), this.addElementToDestroyWithMe(this.lettersAnimation);
-                      },
-                      this.gridLogoAnimation || ee,
-                      this.gridInitialShapes || W,
-                      this.gridVariables || A
-                    )),
-                    this.addElementToDestroyWithMe(this.logoGrid);
-                }
-                update() {}
-              }
-              function Me() {
-                const e = document.createElement('div');
-                return (e.className = 'AL-capsule'), e;
-              }
-              function Ee() {
-                const e = document.createElement('div');
-                return (e.className = 'AL-circle'), e;
-              }
-              function Fe() {
-                const e = document.createElement('div');
-                return (e.className = 'AL-cube'), e;
-              }
-              function Le() {
-                const e = document.createElement('div');
-                return (e.className = 'AL-hexagon'), (e.innerHTML = `<div class="${e.className}__in"></div>`), e;
-              }
-              function Ve() {
-                const e = document.createElement('div');
-                return (
-                  (e.className = 'AL-person'),
-                  (e.innerHTML =
-                    '<svg id="person" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve"><style>.st5{fill:#fb855f}.st6{fill:#0f1048}</style><path d="M25 49.92c13.7 0 24.81-11.11 24.81-24.81S38.7.31 25 .31.19 11.42.19 25.12c0 13.69 11.11 24.8 24.81 24.8z" style="fill:#c9e6fc"/><defs><filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="8.17" y="32.29" width="33.65" height="33.65"><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></defs><mask maskUnits="userSpaceOnUse" x="8.17" y="32.29" width="33.65" height="33.65" id="mask0_8007_175759_00000181067212531250348400000000091437557680784052_"><path d="M24.99 49.92c13.7 0 24.81-11.11 24.81-24.81S38.69.3 24.99.3.18 11.41.18 25.11c.01 13.7 11.12 24.81 24.81 24.81z" style="fill:#c9e6fc;filter:url(#Adobe_OpacityMaskFilter)"/></mask><g style="mask:url(#mask0_8007_175759_00000181067212531250348400000000091437557680784052_)"><path d="M25 65.94c9.29 0 16.83-7.53 16.83-16.83 0-9.29-7.53-16.83-16.83-16.83-9.29 0-16.83 7.53-16.83 16.83 0 9.3 7.53 16.83 16.83 16.83z" style="fill:#6c6cff"/></g><path d="M32.2 35.89c0-3.81-3.07-3.24-6.91-3.24-3.84 0-6.91-.6-6.91 3.24s3.07 6.91 6.91 6.91c3.84 0 6.91-3.1 6.91-6.91z" style="fill:#fff"/><path class="st5" d="M25 8.82c-4.11 0-7.44 3.34-7.44 7.44v5.51c0 4.11 3.34 7.44 7.44 7.44s7.44-3.34 7.44-7.44v-5.51c.01-4.13-3.33-7.44-7.44-7.44z"/><path class="st5" d="M24.85 37.8h.37c1.74 0 3.14-1.4 3.14-3.14v-7.55c0-1.74-1.4-3.14-3.14-3.14h-.37c-1.74 0-3.14 1.4-3.14 3.14v7.55a3.145 3.145 0 0 0 3.14 3.14z"/><path class="st6" d="M25.02 13.53c1.83 0 3.31-1.48 3.31-3.31s-1.48-3.31-3.31-3.31-3.31 1.48-3.31 3.31 1.48 3.31 3.31 3.31z"/><path class="st6" d="M30.92 15.4c2.34 0 4.24-1.9 4.24-4.24s-1.9-4.24-4.24-4.24c-2.34 0-4.24 1.9-4.24 4.24s1.9 4.24 4.24 4.24zM17.86 14.23c.4.2.87.3 1.37.3 1.84 0 3.31-1.47 3.31-3.31 0-.63-.2-1.24-.5-1.77a7.267 7.267 0 0 0-4.18 4.78z"/></svg>'),
-                  e
-                );
-              }
-              const U = 'AL-letter';
-              function Ie() {
-                const e = document.createElement('div');
-                return (
-                  (e.className = U),
-                  (e.innerHTML = `
-
-<span class="${U}__1"></span>
-<span class="${U}__2"></span>
-<span class="${U}__3"></span>
-`),
-                  e
-                );
-              }
-              function Re() {
-                const e = document.createElement('section');
-                e.id = 'AL-container';
-                const t = document.createElement('div');
-                return (
-                  (t.className = 'AL-loader'),
-                  t.appendChild(Me()),
-                  t.appendChild(Ee()),
-                  t.appendChild(Fe()),
-                  t.appendChild(Le()),
-                  t.appendChild(Ve()),
-                  t.appendChild(Ie()),
-                  e.appendChild(t),
-                  e
-                );
-              }
-              const Ae = () => {
-                const e = performance.now();
-                let t = 0,
-                  i = 0,
-                  r = performance.now(),
-                  n = !0,
-                  s;
-                const a = () => {
-                  const d = performance.now(),
-                    u = d - r;
-                  (r = d), i++, u > 100 && t++, n && (s = requestAnimationFrame(a));
-                };
-                return (
-                  (s = requestAnimationFrame(a)),
-                  () => {
-                    (n = !1), cancelAnimationFrame(s);
-                    const d = r - e,
-                      u = i / (d / 1e3);
-                    return { numOfFrames: i, freezes: t, averageFramesPerSecond: u };
-                  }
-                );
-              };
-              function Oe() {
-                return new URLSearchParams(window.location.search).has('cssLoader') ? 'css' : 'canvas';
-              }
-              function _e(e, t) {
-                const i = Re();
-                (e || document.body).append(i);
-                const { unsubscribe: r } = o.subscribe(() => {
-                  r(),
-                    (i.style.opacity = '0'),
-                    i.addEventListener('transitionend', () => {
-                      i.remove(), t?.();
-                    });
+                      (t = performance.now())),
+                    this.callNextDrawFrame());
                 });
               }
-              function $e(e, t) {
-                const i = new v();
-                i.init(e || document.body);
-                const r = i.addElement(new Te()),
-                  { unsubscribe: n } = o.subscribe(() => {
-                    n(),
-                      r.onFinish.subscribe(() => {
-                        i.clean(() => {
-                          t?.();
-                        });
-                      });
-                  });
-                return i;
+              clean(t) {
+                if (this.cleaned) {
+                  console.error("You can't clean twice");
+                  return;
+                }
+                (this.cleaned = !0),
+                  this.canvasElement.addEventListener(
+                    'transitionend',
+                    () => {
+                      this.canvasElement?.remove(), t?.();
+                    },
+                    { once: !0 }
+                  ),
+                  (this.canvasElement.style.opacity = '0'),
+                  (this.canvasElement.style.transform = 'scale(0)'),
+                  this.resizeObserver?.disconnect();
+                for (const i of this.updateables) i.onDeleted();
+                this.requestedAnimationFrame !== void 0 && cancelAnimationFrame(this.requestedAnimationFrame);
               }
-              function ke(e) {
-                const t = Ae(),
-                  i = () => {
-                    console.log('app-loader fps measure', t()),
-                      window.top?.postMessage({ type: 'clean-app-loader-iframe' }, '*');
-                  };
+              remove(t) {
+                if (t.deleted) return;
+                (t.deleted = !0), t.onDeleted(), delete this.byId[t.id];
+                for (const n of t.destroyWithMe) this.remove(n);
+                const i = this.drawables.indexOf(t),
+                  r = this.updateables.indexOf(t);
+                r !== -1 && this.updateables.splice(r, 1), i !== -1 && this.drawables.splice(i, 1);
+              }
+              addElement(t) {
                 return (
-                  setTimeout(() => {
-                    console.log('app-loader fps measure', t());
-                  }, 30 * 1e3),
-                  window.addEventListener('message', n => {
-                    typeof n.data == 'object' && n.data.type === 'router-loaded' && o.notify({ loadedPart: 'router' });
-                  }),
-                  Oe() === 'css' ? _e(e, i) : $e(e, i)
+                  (this.byId[t.id || `updatable-${T++}`] = t),
+                  this.updateables.push(t),
+                  'drawable' in t && this.drawables.push(t),
+                  (t.controller = this),
+                  t.onCreated(),
+                  t
                 );
               }
-              ke(), (window.onRouteLoad = o);
-              const { init: We, updateInitialData: De, unmount: Pe, render: Be } = c,
-                q = e => {
-                  if (e)
-                    return (...t) => {
-                      try {
-                        e(...t);
-                      } catch (i) {
-                        const { loggerService: r } = Y();
-                        throw (r ? r.error(i) : console.error(i), i);
-                      }
-                    };
+              updateFrame() {
+                const t = (Date.now() - this.lastFrameTime) / 16.666666666666668;
+                for (const i of this.updateables)
+                  if (!i.deleted) {
+                    (i.controller = this), (i.deltaTime = t), (i.updated = !0);
+                    try {
+                      i.update();
+                    } catch (r) {
+                      console.error('Update failed', i, r);
+                      continue;
+                    }
+                  }
+                this.lastFrameTime = Date.now();
+              }
+              drawFrame() {
+                for (const t of this.drawables)
+                  if (!t.deleted && t.updated) {
+                    this.ctx.save();
+                    try {
+                      t.draw(this.ctx);
+                    } catch (i) {
+                      console.error('Draw failed', t, i);
+                      continue;
+                    }
+                    this.ctx.restore();
+                  }
+              }
+            }
+            class p {
+              constructor() {
+                (this.deleted = !1), (this.updated = !1), (this.destroyWithMe = []), (this.deltaTime = 0);
+              }
+              onCreated() {}
+              onDeleted() {}
+              addElementToDestroyWithMe(t) {
+                return this.controller.addElement(t), this.destroyWithMe.push(t), t;
+              }
+            }
+            class O extends p {
+              constructor(t, i, r, n) {
+                super(), (this.drawable = !0), (this.x = t), (this.y = i), (this.width = r), (this.height = n);
+              }
+            }
+            let F = !1;
+            function M(e) {
+              F = e;
+            }
+            function C() {
+              return F;
+            }
+            const G = {
+                defaultWidth: 50,
+                defaultHeight: 50,
+                paths: [
+                  {
+                    path: new Path2D(
+                      'M25,50c13.81,0,25-11.19,25-25C50,11.19,38.81,0,25,0C11.19,0,0,11.19,0,25C0,38.81,11.19,50,25,50z'
+                    ),
+                    fill: '#C9E6FC',
+                  },
+                  {
+                    path: new Path2D(`M25,66.15c9.37,0,16.96-7.59,16.96-16.96c0-9.37-7.59-16.96-16.96-16.96c-9.37,0-16.96,7.59-16.96,16.96
+        C8.04,58.56,15.63,66.15,25,66.15z`),
+                    fill: '#6C6CFF',
+                  },
+                  {
+                    path: new Path2D(`M32.25,35.87c0-3.84-3.1-3.26-6.96-3.26c-3.87,0-6.97-0.61-6.97,3.26s3.1,6.97,6.97,6.97
+      C29.16,42.83,32.25,39.7,32.25,35.87z`),
+                    fill: '#FFFFFF',
+                  },
+                  {
+                    path: new Path2D(`M25,8.58c-4.14,0-7.5,3.36-7.5,7.5v5.55c0,4.14,3.36,7.5,7.5,7.5s7.5-3.36,7.5-7.5v-5.55
+		C32.51,11.91,29.14,8.58,25,8.58z`),
+                    fill: '#FB855F',
+                  },
+                  {
+                    path: new Path2D(`M24.85,37.79h0.37c1.75,0,3.16-1.41,3.16-3.16v-7.6c0-1.75-1.41-3.16-3.16-3.16h-0.37
+c-1.75,0-3.16,1.41-3.16,3.16v7.6C21.69,36.37,23.1,37.79,24.85,37.79z`),
+                    fill: '#FB855F',
+                  },
+                  {
+                    path: new Path2D(
+                      'M25.02,13.33c1.84,0,3.33-1.49,3.33-3.33s-1.49-3.33-3.33-3.33s-3.33,1.49-3.33,3.33S23.18,13.33,25.02,13.33z'
+                    ),
+                    fill: '#0F1048',
+                  },
+                  {
+                    path: new Path2D(`M30.96,15.21c2.36,0,4.27-1.91,4.27-4.27s-1.91-4.27-4.27-4.27c-2.36,0-4.27,1.91-4.27,4.27
+		S28.6,15.21,30.96,15.21z`),
+                    fill: '#0F1048',
+                  },
+                  {
+                    path: new Path2D(`M17.8,14.03c0.4,0.2,0.87,0.3,1.38,0.3c1.85,0,3.33-1.48,3.33-3.33c0-0.64-0.2-1.24-0.5-1.78
+		C19.95,10.09,18.41,11.84,17.8,14.03z`),
+                    fill: '#0F1048',
+                  },
+                ],
+              },
+              Z = {
+                defaultHeight: 50,
+                defaultWidth: 50,
+                paths: [
+                  {
+                    path: new Path2D(`M47.21,35.31V14.69c0-1.56-0.83-2.99-2.18-3.77L27.18,0.61c-1.35-0.78-3.01-0.78-4.36,0L4.97,10.92
+            c-1.35,0.78-2.18,2.22-2.18,3.77v20.62c0,1.56,0.83,2.99,2.18,3.77l17.86,10.31c1.35,0.78,3.01,0.78,4.36,0l17.86-10.31
+            C46.38,38.3,47.21,36.87,47.21,35.31z`),
+                  },
+                ],
+                move: { x: 3, y: 0 },
+              },
+              A = {
+                initialShapeColor: '#6C6CFF',
+                sideCircleColor: '#FB265D',
+                cubeColor: '#6C6CFF',
+                cubeSecondColor: '#FFCC02',
+                personColor: 'rgb(195 232 255)',
+                hexagonColor: 'rgb(108 108 255)',
+                initialShapeSecondColor: '#FDAB3D',
+                initialShapeThirdColor: '#00CA72',
+                initialShapeWidthBezier: [0.2, 0, 0.3, 1.75],
+                initialShapeDownBezier: [0.2, 0, 0.3, 1.45],
+                personDownBezier: [0.2, 0, 0.2, 1.5],
+                cubeDownBezier: [0.2, 0, 0.3, 1.35],
+                cubeRightBezier: [0.2, 0, 0.3, 1.45],
+                hexagonRightBezier: [0.2, 0, 0.3, 1.45],
+                initialShapeLeftBezier: [0, 0, 0.2, 1.8],
+                sideCircleLeftBezier: [0.2, 0, 0.3, 1.45],
+                personRightBezier: [0.2, 0, 0.3, 1.45],
+                centerEndBezier: [0.2, 0, 0.45, 1],
+                centerizedUntil: 0.2,
+                centerizedSizeUntil: 0.25,
+              },
+              W = {
+                initialShape: {
+                  color: '$initialShapeColor',
+                  isVisible: !0,
+                  gridX: 0,
+                  gridY: -1,
+                  gridWidth: 1,
+                  gridHeight: 1,
+                  radius: 1,
                 },
-                Ne = !1,
-                Ye = e =>
-                  new Proxy(e, {
-                    get(t, i) {
-                      if (i === 'loggerService' && t.loggerService) {
-                        const { loggerService: r } = t;
-                        return {
-                          ...r,
-                          error: (n, s, a) => {
-                            Ne
-                              ? (console.log(
-                                  `%cSimulating sending errors to %cSentry
+                sideCircle: {
+                  color: '$sideCircleColor',
+                  isVisible: !1,
+                  gridX: 2,
+                  gridY: 0,
+                  gridWidth: 1,
+                  gridHeight: 1,
+                  radius: 1,
+                },
+                cube: {
+                  color: '$cubeColor',
+                  isVisible: !1,
+                  gridX: 0,
+                  gridY: -2,
+                  gridWidth: 1,
+                  gridHeight: 1,
+                  radius: 0.15,
+                },
+                person: {
+                  color: '$personColor',
+                  isVisible: !1,
+                  gridX: 1,
+                  gridY: -2,
+                  gridWidth: 1,
+                  gridHeight: 1,
+                  radius: 1,
+                  svg: G,
+                  clipCircle: !0,
+                },
+                hexagon: {
+                  color: '$hexagonColor',
+                  isVisible: !1,
+                  gridX: -1,
+                  gridY: -1,
+                  gridWidth: 1,
+                  gridHeight: 1,
+                  radius: 1,
+                  svg: Z,
+                },
+              },
+              ee = {
+                type: 'series',
+                values: [
+                  {
+                    type: 'oneEase',
+                    duration: 300,
+                    delay: 160,
+                    targetValues: [
+                      {
+                        by: 'initialShape',
+                        key: 'gridWidth',
+                        value: 3,
+                        easeType: 'bezier',
+                        bezier: '$initialShapeWidthBezier',
+                      },
+                    ],
+                  },
+                  {
+                    type: 'parallel',
+                    values: [
+                      {
+                        type: 'oneEase',
+                        duration: 300,
+                        delay: 120,
+                        setOnStart: { person: { isVisible: !0 } },
+                        targetValues: [
+                          {
+                            by: 'initialShape',
+                            key: 'gridY',
+                            value: 0,
+                            easeType: 'bezier',
+                            bezier: '$initialShapeDownBezier',
+                          },
+                          { by: 'initialShape', key: 'radius', value: 0.15 },
+                          { by: 'initialShape', key: 'color', value: '$initialShapeSecondColor' },
+                          { by: 'person', key: 'gridY', value: -1, easeType: 'bezier', bezier: '$personDownBezier' },
+                        ],
+                      },
+                      {
+                        type: 'oneEase',
+                        duration: 300,
+                        delay: 240,
+                        setOnStart: { cube: { isVisible: !0 } },
+                        targetValues: [
+                          { by: 'cube', key: 'gridY', value: -1, easeType: 'bezier', bezier: '$cubeDownBezier' },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    type: 'parallel',
+                    values: [
+                      {
+                        type: 'oneEase',
+                        duration: 300,
+                        delay: 120,
+                        targetValues: [
+                          {
+                            by: 'initialShape',
+                            key: 'gridX',
+                            value: -1,
+                            easeType: 'bezier',
+                            bezier: '$initialShapeLeftBezier',
+                          },
+                          { by: 'initialShape', key: 'color', value: '$initialShapeThirdColor' },
+                          { by: 'person', key: 'gridX', value: 2, easeType: 'bezier', bezier: '$personRightBezier' },
+                        ],
+                      },
+                      {
+                        type: 'oneEase',
+                        duration: 300,
+                        delay: 200,
+                        targetValues: [
+                          { by: 'cube', key: 'gridX', value: 1, easeType: 'bezier', bezier: '$cubeRightBezier' },
+                        ],
+                      },
+                      {
+                        setOnStart: { hexagon: { isVisible: !0 }, sideCircle: { isVisible: !0 } },
+                        type: 'oneEase',
+                        duration: 300,
+                        delay: 260,
+                        targetValues: [
+                          { by: 'cube', key: 'color', value: '$cubeSecondColor' },
+                          { by: 'hexagon', key: 'gridX', value: 0, easeType: 'bezier', bezier: '$hexagonRightBezier' },
+                          {
+                            by: 'sideCircle',
+                            key: 'gridX',
+                            value: 1,
+                            easeType: 'bezier',
+                            bezier: '$sideCircleLeftBezier',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  { type: 'oneEase', delay: 0, duration: 200, targetValues: [] },
+                  {
+                    type: 'parallel',
+                    values: [
+                      {
+                        type: 'oneEase',
+                        delay: 0,
+                        duration: 120,
+                        targetValues: [
+                          {
+                            by: 'initialShape',
+                            key: 'centerized',
+                            value: '$centerizedUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                          {
+                            by: 'sideCircle',
+                            key: 'centerized',
+                            value: '$centerizedUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                          {
+                            by: 'cube',
+                            key: 'centerized',
+                            value: '$centerizedUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                          {
+                            by: 'person',
+                            key: 'centerized',
+                            value: '$centerizedUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                          {
+                            by: 'hexagon',
+                            key: 'centerized',
+                            value: '$centerizedUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                        ],
+                      },
+                      {
+                        type: 'oneEase',
+                        delay: 0,
+                        duration: 120,
+                        targetValues: [
+                          {
+                            by: 'initialShape',
+                            key: 'centerizedSize',
+                            value: '$centerizedSizeUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                          {
+                            by: 'sideCircle',
+                            key: 'centerizedSize',
+                            value: '$centerizedSizeUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                          {
+                            by: 'cube',
+                            key: 'centerizedSize',
+                            value: '$centerizedSizeUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                          {
+                            by: 'person',
+                            key: 'centerizedSize',
+                            value: '$centerizedSizeUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                          {
+                            by: 'hexagon',
+                            key: 'centerizedSize',
+                            value: '$centerizedSizeUntil',
+                            easeType: 'bezier',
+                            bezier: '$centerEndBezier',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              };
+            var ce = S(198),
+              de = S.n(ce);
+            const D = function (e) {
+                return function (t) {
+                  return Math.pow(t, e);
+                };
+              },
+              P = function (e) {
+                return function (t) {
+                  return 1 - Math.abs(Math.pow(t - 1, e));
+                };
+              },
+              H = function (e) {
+                return function (t) {
+                  return t < 0.5 ? D(e)(t * 2) / 2 : P(e)(t * 2 - 1) / 2 + 0.5;
+                };
+              },
+              f = function (e) {
+                return function (t, i, r) {
+                  const n = e(t);
+                  return i + (r - i) * n;
+                };
+              },
+              L = {
+                linear: f(e => e),
+                easeInQuad: f(D(2)),
+                easeOutQuad: f(P(2)),
+                easeInOutQuad: f(H(2)),
+                easeInCubic: f(D(3)),
+                easeOutCubic: f(P(3)),
+                easeInOutCubic: f(H(3)),
+                easeInQuart: f(D(4)),
+                easeOutQuart: f(P(4)),
+                easeInOutQuart: f(H(4)),
+                easeInQuint: f(D(5)),
+                easeOutQuint: f(P(5)),
+                easeInOutQuint: f(H(5)),
+                easeInElastic: f(function (e) {
+                  return (0.04 - 0.04 / e) * Math.sin(25 * e) + 1;
+                }),
+                easeOutElastic: f(function (e) {
+                  return ((0.04 * e) / --e) * Math.sin(25 * e);
+                }),
+                easeInOutElastic: f(function (e) {
+                  return (e -= 0.5) < 0
+                    ? (0.02 + 0.01 / e) * Math.sin(50 * e)
+                    : (0.02 - 0.01 / e) * Math.sin(50 * e) + 1;
+                }),
+                easeInSin: f(function (e) {
+                  return 1 + Math.sin((Math.PI / 2) * e - Math.PI / 2);
+                }),
+                easeOutSin: f(function (e) {
+                  return Math.sin((Math.PI / 2) * e);
+                }),
+                easeInOutSin: f(function (e) {
+                  return (1 + Math.sin(Math.PI * e - Math.PI / 2)) / 2;
+                }),
+                bezier: (e, t, i, r) => n => de()(e, t, i, r)(n),
+              };
+            class ue extends p {
+              constructor(t, i, r, { onStart: n, onFinish: s } = {}) {
+                super(),
+                  (this.started = !1),
+                  (this.delay = t),
+                  (this.duration = i),
+                  (this.startedAt = Date.now()),
+                  (this.updateAnimation = r),
+                  (this.onFinish = new l(s)),
+                  (this.onStart = new l(n));
+              }
+              onCreated() {
+                this.startedAt = Date.now();
+              }
+              update() {
+                const t = C() ? 1 : (Date.now() - this.startedAt - this.delay) / this.duration;
+                t < 0 ||
+                  (this.started || ((this.started = !0), this.onStart.notify(void 0)),
+                  this.updateAnimation(Math.min(1, t)),
+                  t >= 1 && (this.controller.remove(this), this.onFinish.notify(void 0)));
+              }
+            }
+            const te = { color: (e, t, i) => i, number: L.linear };
+            class pe extends ue {
+              constructor(t, i, r, n) {
+                super(t, i, s => {
+                  this.targetValueWithStartValues && this.updateValues(s);
+                }),
+                  (this.targetValues = r),
+                  (this.setOnStart = n);
+              }
+              getByActual(t) {
+                return typeof t == 'string' ? this.controller.byId[t] : t;
+              }
+              updateValues(t) {
+                for (const i of this.targetValueWithStartValues) {
+                  const r = i.easeType(t, 0, 1),
+                    n = i.fromValueToValueByType(r, i.startValue, i.value);
+                  i.by[i.key] = n;
+                }
+              }
+              setStartValue() {
+                this.targetValueWithStartValues = this.targetValues.map(t => ({
+                  ...t,
+                  startValue: t.startValue || t.by[t.key],
+                  easeType: t.easeType || L.linear,
+                  fromValueToValueByType:
+                    t.fromValueToValueByType || (typeof t.value == 'string' ? te.color : te.number),
+                }));
+              }
+              onCreated() {
+                super.onCreated(),
+                  this.onStart.subscribe(() => {
+                    if (this.setOnStart) for (const t of this.setOnStart) t.by[t.key] = t.value;
+                    this.setStartValue();
+                  });
+              }
+            }
+            class fe extends p {
+              constructor(t, { onFinish: i } = {}) {
+                super(), (this.runs = t), (this.currentRun = 0), (this.onFinish = new l(i));
+              }
+              nextRun() {
+                if (!this.runs[this.currentRun]) {
+                  this.onFinish.notify(void 0), this.controller.remove(this);
+                  return;
+                }
+                this.addElementToDestroyWithMe(this.runs[this.currentRun]),
+                  this.runs[this.currentRun].onFinish.subscribe(() => {
+                    this.nextRun();
+                  }),
+                  this.currentRun++;
+              }
+              onCreated() {
+                this.nextRun();
+              }
+              update() {}
+            }
+            class ge extends p {
+              constructor(t, { onFinish: i } = {}) {
+                super(), (this.runs = t), (this.onFinish = new l(i));
+              }
+              onCreated() {
+                const t = new Set();
+                for (const i of this.runs)
+                  this.addElementToDestroyWithMe(i),
+                    i.onFinish.subscribe(() => {
+                      t.add(i),
+                        t.size === this.runs.length && (this.onFinish.notify(void 0), this.controller.remove(this));
+                    });
+              }
+              update() {}
+            }
+            function ie(e, t) {
+              if (!e.byId[t]) throw new Error(`no such id ${t}`);
+              return e.byId[t];
+            }
+            const be = {
+              oneEase: (e, t, i) =>
+                new pe(
+                  t.delay,
+                  t.duration,
+                  t.targetValues.map(r => {
+                    const n = r.easeType === 'bezier',
+                      [s, a, h, c] = g(r.bezier, i) || [0.2, 0, 0.3, 1.45],
+                      d = n ? L.bezier(s, a, h, c) : r.easeType ? L[r.easeType] : void 0;
+                    return { ...r, value: g(r.value, i), by: ie(e, r.by), easeType: d };
+                  }),
+                  t.setOnStart
+                    ? Object.entries(t.setOnStart)
+                        .map(([r, n]) => Object.entries(n).map(([s, a]) => ({ by: ie(e, r), key: s, value: a })))
+                        .flat()
+                    : void 0
+                ),
+              series: (e, t, i) => new fe(t.values.map(r => U(e, r, i))),
+              parallel: (e, t, i) => new ge(t.values.map(r => U(e, r, i))),
+            };
+            function U(e, t, i) {
+              return be[t.type](e, t, i);
+            }
+            function g(e, t) {
+              if (!t || typeof e > 'u' || typeof e != 'string') return e;
+              if (e.startsWith('$')) {
+                const i = t[e.substring(1)];
+                return typeof i > 'u' ? e : i;
+              }
+              return e;
+            }
+            const E = 0.5,
+              Je = (e, t, i, r, n) => {
+                const s = e.lineWidth * E;
+                e.strokeRect(Math.round(t) + s, Math.round(i) + s, r - e.lineWidth, n - e.lineWidth);
+              },
+              Ge = (e, t, i, r, n) => {
+                const s = e.lineWidth * E,
+                  a = Math.round(t) + s,
+                  h = Math.round(i) + s,
+                  c = r - e.lineWidth,
+                  d = n - e.lineWidth;
+                e.beginPath(),
+                  e.moveTo(a + c, h),
+                  e.lineTo(a, h),
+                  e.moveTo(a + c, h + d),
+                  e.lineTo(a, h + d),
+                  e.stroke();
+              },
+              Ze = (e, t, i, r, n) => {
+                const s = e.lineWidth * E,
+                  a = Math.round(t) + s,
+                  h = Math.round(i) + s,
+                  c = r - e.lineWidth,
+                  d = n - e.lineWidth;
+                e.beginPath(),
+                  e.moveTo(a + c, h),
+                  e.lineTo(a, h),
+                  e.lineTo(a, h + d),
+                  e.lineTo(a + c, h + d),
+                  e.stroke();
+              },
+              ye = (e, t, i, r, n, s, a) => {
+                let h = { upperLeft: 0, upperRight: 0, lowerLeft: 0, lowerRight: 0 };
+                if (typeof a == 'object') {
+                  const c = Object.keys(a);
+                  for (const d of c) h[d] = a[d] || 0;
+                } else h = { upperLeft: a, upperRight: a, lowerLeft: a, lowerRight: a };
+                r === n && typeof a == 'number' && Math.round(a) >= r / 2
+                  ? (e.beginPath(), e.arc(t + r / 2, i + n / 2, r / 2, 0, Math.PI * 2), e.closePath())
+                  : me(
+                      e,
+                      Math.round(t) + (s ? e.lineWidth * E : 0),
+                      h,
+                      Math.round(i) + (s ? e.lineWidth * E : 0),
+                      Math.round(r) - (s ? e.lineWidth : 0),
+                      Math.round(n) - (s ? e.lineWidth : 0)
+                    ),
+                  s ? e.stroke() : e.fill();
+              },
+              Ke = (e, t, i, r, n, s, a) => {
+                let h = { upperLeft: 0, upperRight: 0, lowerLeft: 0, lowerRight: 0 };
+                if (typeof a == 'object') {
+                  const c = Object.keys(a);
+                  for (const d of c) h[d] = a[d] || 0;
+                } else h = { upperLeft: a, upperRight: a, lowerLeft: a, lowerRight: a };
+                ze(
+                  e,
+                  Math.round(t) + (s ? e.lineWidth * E : 0),
+                  h,
+                  Math.round(i) + (s ? e.lineWidth * E : 0),
+                  Math.round(r) - (s ? e.lineWidth : 0),
+                  Math.round(n) - (s ? e.lineWidth : 0)
+                ),
+                  s || (e.lineTo(t, i + n), e.closePath()),
+                  s ? e.stroke() : e.fill();
+              };
+            function me(e, t, i, r, n, s) {
+              e.beginPath(),
+                e.moveTo(t + i.upperLeft, r),
+                e.lineTo(t + n - i.upperRight, r),
+                e.quadraticCurveTo(t + n, r, t + n, r + i.upperRight),
+                e.lineTo(t + n, r + s - i.lowerRight),
+                e.quadraticCurveTo(t + n, r + s, t + n - i.lowerRight, r + s),
+                e.lineTo(t + i.lowerLeft, r + s),
+                e.quadraticCurveTo(t, r + s, t, r + s - i.lowerLeft),
+                e.lineTo(t, r + i.upperLeft),
+                e.quadraticCurveTo(t, r, t + i.upperLeft, r),
+                e.closePath();
+            }
+            function ze(e, t, i, r, n, s) {
+              e.beginPath(),
+                e.moveTo(t, r),
+                e.lineTo(t, r + s - i.lowerLeft),
+                e.quadraticCurveTo(t, r + s, t + i.lowerLeft, r + s);
+            }
+            const re = (e, t, i, r, n, s, a = 0) => {
+              e.save(),
+                e.translate(i, r),
+                e.scale(n / t.defaultWidth, s / t.defaultHeight),
+                a && (e.translate(n / 2, s / 2), e.rotate((a * Math.PI) / 180), e.translate(-n / 2, -s / 2)),
+                e.translate(t.move?.x || 0, t.move?.y || 0);
+              const h = e.fillStyle;
+              for (const { path: c, fill: d } of t.paths)
+                e.save(),
+                  (e.fillStyle = d || h),
+                  t.clip && e.clip(c, 'evenodd'),
+                  t.stroke ? e.stroke(c) : e.fill(c),
+                  e.restore();
+              e.restore();
+            };
+            class ve extends O {
+              constructor(t, i, r, n, s, a, h, c, d, le, Qe, Xe = !1) {
+                super(0, 0, 100, 100),
+                  (this.id = t),
+                  (this.gridSize = i),
+                  (this.gridSpace = r),
+                  (this.gridWidth = c),
+                  (this.gridHeight = d),
+                  (this.initialWidth = c),
+                  (this.initialHeight = d),
+                  (this.isVisible = s),
+                  (this.initialIsVisible = s),
+                  (this.color = n),
+                  (this.initialColor = n),
+                  (this.gridX = a),
+                  (this.gridY = h),
+                  (this.radius = le),
+                  (this.initialgridX = a),
+                  (this.initialgridY = h),
+                  (this.initialRadius = le),
+                  (this.svg = Qe),
+                  (this.centerized = 0),
+                  (this.centerizedSize = 0),
+                  (this.clipCircle = Xe);
+              }
+              onCreated() {}
+              reset() {
+                (this.isVisible = this.initialIsVisible),
+                  (this.color = this.initialColor),
+                  (this.gridWidth = this.initialWidth),
+                  (this.gridHeight = this.initialHeight),
+                  (this.radius = this.initialRadius),
+                  (this.gridX = this.initialgridX),
+                  (this.gridY = this.initialgridY),
+                  (this.centerized = 0),
+                  (this.centerizedSize = 0),
+                  this.update();
+              }
+              update() {
+                (this.width = L.linear(
+                  this.centerizedSize,
+                  this.gridWidth * this.gridSize + (Math.abs(this.gridWidth) - 1) * this.gridSpace,
+                  0
+                )),
+                  (this.height = L.linear(
+                    this.centerizedSize,
+                    this.gridHeight * this.gridSize + (Math.abs(this.gridHeight) - 1) * this.gridSpace,
+                    0
+                  )),
+                  (this.x =
+                    L.linear(
+                      this.centerized,
+                      Math.round(
+                        this.controller.width / 2 +
+                          this.gridX * this.gridSize +
+                          this.gridX * this.gridSpace -
+                          Math.round(this.width / 2)
+                      ),
+                      this.controller.width / 2 - this.gridSize
+                    ) -
+                    this.gridSize / 1.5),
+                  (this.y =
+                    L.linear(
+                      this.centerized,
+                      Math.round(
+                        this.controller.height / 2 +
+                          this.gridY * this.gridSize +
+                          this.gridY * this.gridSpace -
+                          this.height / 2
+                      ),
+                      this.controller.height / 2 - this.gridSize / 2
+                    ) +
+                    this.gridSize / 5);
+              }
+              draw(t) {
+                this.isVisible &&
+                  ((t.fillStyle = this.color),
+                  this.svg
+                    ? (t.save(),
+                      this.clipCircle &&
+                        (t.beginPath(),
+                        t.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2),
+                        t.closePath(),
+                        t.clip()),
+                      re(t, this.svg, this.x, this.y, this.width, this.height),
+                      t.restore())
+                    : ye(t, this.x, this.y, this.width, this.height, !1, this.radius * (this.gridSize / 2)));
+              }
+            }
+            class Se extends p {
+              constructor(t, i, r, n, s, a) {
+                super(),
+                  (this.onLogoAnimationFinished = r),
+                  (this.gridSize = t),
+                  (this.gridSpace = i),
+                  (this.shapes = []),
+                  (this.animationJson = n || ee),
+                  (this.initialShapes = s || W),
+                  (this.animationVariables = a || A);
+              }
+              onCreated() {
+                const t = this.gridSize,
+                  i = this.gridSpace;
+                this.shapes = [];
+                for (const [r, n] of Object.entries(this.initialShapes))
+                  this.shapes.push(
+                    this.addElementToDestroyWithMe(
+                      new ve(
+                        r,
+                        t,
+                        i,
+                        g(n.color, this.animationVariables),
+                        g(n.isVisible, this.animationVariables),
+                        g(n.gridX, this.animationVariables),
+                        g(n.gridY, this.animationVariables),
+                        g(n.gridWidth, this.animationVariables),
+                        g(n.gridHeight, this.animationVariables),
+                        g(n.radius, this.animationVariables),
+                        g(n.svg, this.animationVariables),
+                        g(n.clipCircle, this.animationVariables)
+                      )
+                    )
+                  );
+                this.animation();
+              }
+              animation() {
+                this.addElementToDestroyWithMe(
+                  U(this.controller, this.animationJson, this.animationVariables)
+                ).onFinish.subscribe(() => {
+                  if ((this.onLogoAnimationFinished?.(), !C())) {
+                    for (const i of this.shapes) i.reset();
+                    this.deleted || this.animation();
+                  }
+                });
+              }
+              update() {}
+            }
+            const ne = {
+                defaultWidth: 50,
+                defaultHeight: 50,
+                paths: [
+                  {
+                    path: new Path2D(`M10.42,49.96c-3.86,0-7.42-2.01-9.29-5.25c-1.87-3.23-1.76-7.19,0.29-10.32L20.54,5.17
+        c1.94-3.24,5.57-5.2,9.46-5.11c3.89,0.09,7.43,2.21,9.21,5.53c1.78,3.32,1.52,7.3-0.68,10.38L19.41,45.19
+        C17.47,48.15,14.07,49.96,10.42,49.96L10.42,49.96z`),
+                  },
+                ],
+              },
+              se = {
+                type: 'parallel',
+                values: [
+                  {
+                    type: 'oneEase',
+                    duration: 360,
+                    delay: 0,
+                    targetValues: [
+                      {
+                        by: 'leftLetter',
+                        key: 'width',
+                        value: '$letterFinalSize',
+                        easeType: 'bezier',
+                        bezier: '$bezier',
+                      },
+                      {
+                        by: 'leftLetter',
+                        key: 'height',
+                        value: '$letterFinalSize',
+                        easeType: 'bezier',
+                        bezier: '$bezier',
+                      },
+                    ],
+                  },
+                  {
+                    type: 'oneEase',
+                    duration: 320,
+                    delay: 40,
+                    targetValues: [
+                      { by: 'middle', key: 'width', value: '$letterFinalSize', easeType: 'bezier', bezier: '$bezier' },
+                      { by: 'middle', key: 'height', value: '$letterFinalSize', easeType: 'bezier', bezier: '$bezier' },
+                    ],
+                    setOnStart: { middle: { isVisible: !0 } },
+                  },
+                  {
+                    type: 'oneEase',
+                    duration: 320,
+                    delay: 80,
+                    targetValues: [
+                      {
+                        by: 'right',
+                        key: 'width',
+                        value: '$circleFinalSize',
+                        easeType: 'bezier',
+                        bezier: '$circleBezier',
+                      },
+                      {
+                        by: 'right',
+                        key: 'height',
+                        value: '$circleFinalSize',
+                        easeType: 'bezier',
+                        bezier: '$circleBezier',
+                      },
+                    ],
+                    setOnStart: { right: { isVisible: !0 } },
+                  },
+                  { type: 'oneEase', duration: 300, delay: 1e3, targetValues: [] },
+                ],
+              },
+              ae = {
+                leftLetter: {
+                  svg: ne,
+                  relativeX: -32,
+                  relativeY: '$letterY',
+                  width: '$letterInitialSize',
+                  height: '$letterInitialSize',
+                  isVisible: !0,
+                  color: '$leftLetterColor',
+                },
+                middle: {
+                  svg: ne,
+                  relativeX: 0,
+                  relativeY: '$letterY',
+                  width: '$letterInitialSize',
+                  height: '$letterInitialSize',
+                  isVisible: !1,
+                  color: '$middleLetterColor',
+                },
+                right: {
+                  circle: !0,
+                  relativeX: 18,
+                  relativeY: '$circleY',
+                  width: '$circleInitialSize',
+                  height: '$circleInitialSize',
+                  isVisible: !1,
+                  color: '$rightLetterColor',
+                },
+              },
+              oe = {
+                bezier: [0.2, 0, 0.2, 1.65],
+                circleBezier: [0.2, 0, 0.3, 1.65],
+                leftLetterColor: '#FB265D',
+                middleLetterColor: '#FFCC02',
+                rightLetterColor: '#00CA72',
+                letterY: -20,
+                circleY: -6,
+                letterInitialSize: 80,
+                circleInitialSize: 40,
+                letterFinalSize: 50,
+                circleFinalSize: 22,
+              };
+            class we extends O {
+              constructor({
+                id: t,
+                relativeX: i,
+                relativeY: r,
+                color: n,
+                circle: s = !1,
+                svg: a,
+                isVisible: h,
+                width: c,
+                height: d,
+              }) {
+                super(0, 0, c, d),
+                  (this.id = t),
+                  (this.circle = s),
+                  (this.svg = a),
+                  (this.relativeX = i),
+                  (this.relativeY = r),
+                  (this.color = n),
+                  (this.isVisible = h);
+              }
+              update() {
+                (this.x = this.controller.width / 2 + this.relativeX - this.width / 2),
+                  (this.y = this.controller.height / 2 + this.relativeY - this.height / 2);
+              }
+              draw(t) {
+                this.isVisible &&
+                  ((t.fillStyle = this.color),
+                  this.svg
+                    ? re(t, this.svg, this.x, this.y, this.width, this.height)
+                    : this.circle &&
+                      (t.beginPath(),
+                      t.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, 2 * Math.PI),
+                      t.fill()));
+              }
+            }
+            class Ce extends p {
+              constructor(t, i, r, n) {
+                super(),
+                  (this.onFinish = new l()),
+                  (this.onLogoAnimationFinished = t),
+                  (this.shapes = []),
+                  (this.animationJson = i || se),
+                  (this.initialShapes = r || ae),
+                  (this.animationVariables = n || oe);
+              }
+              onCreated() {
+                this.shapes = [];
+                for (const [t, i] of Object.entries(this.initialShapes))
+                  this.shapes.push(
+                    this.addElementToDestroyWithMe(
+                      new we({
+                        id: t,
+                        relativeX: g(i.relativeX, this.animationVariables),
+                        relativeY: g(i.relativeY, this.animationVariables),
+                        circle: g(i.circle, this.animationVariables),
+                        svg: g(i.svg, this.animationVariables),
+                        color: g(i.color, this.animationVariables),
+                        width: g(i.width, this.animationVariables),
+                        height: g(i.height, this.animationVariables),
+                        isVisible: g(i.isVisible, this.animationVariables),
+                      })
+                    )
+                  );
+                this.animation();
+              }
+              animation() {
+                this.addElementToDestroyWithMe(
+                  U(this.controller, this.animationJson, this.animationVariables)
+                ).onFinish.subscribe(() => {
+                  this.onLogoAnimationFinished && this.onLogoAnimationFinished(), this.onFinish.notify(void 0);
+                });
+              }
+              update() {}
+            }
+            class Te extends p {
+              constructor({
+                letterLogoAnimation: t,
+                gridLogoAnimation: i,
+                gridInitialShapes: r,
+                lettersShapes: n,
+                gridVariables: s,
+                lettersVariables: a,
+                onFinish: h,
+              } = {}) {
+                super(),
+                  (this.onFinish = new l()),
+                  (this.letterLogoAnimation = t),
+                  (this.gridLogoAnimation = i),
+                  (this.lettersShapes = n),
+                  (this.gridInitialShapes = r),
+                  (this.gridVariables = s),
+                  (this.lettersVariables = a),
+                  (this.onFinish = new l(h));
+              }
+              onCreated() {
+                this.animate();
+              }
+              animate() {
+                (this.lettersAnimation = new Ce(
+                  () => {
+                    C() ||
+                      (this.controller.remove(this.lettersAnimation), this.animate(), this.onFinish.notify(void 0));
+                  },
+                  this.letterLogoAnimation || se,
+                  this.lettersShapes || ae,
+                  this.lettersVariables || oe
+                )),
+                  (this.logoGrid = new Se(
+                    50,
+                    6,
+                    () => {
+                      this.controller.remove(this.logoGrid), this.addElementToDestroyWithMe(this.lettersAnimation);
+                    },
+                    this.gridLogoAnimation || ee,
+                    this.gridInitialShapes || W,
+                    this.gridVariables || A
+                  )),
+                  this.addElementToDestroyWithMe(this.logoGrid);
+              }
+              update() {}
+            }
+            function Me() {
+              const e = document.createElement('div');
+              return (e.className = 'AL-capsule'), e;
+            }
+            function Fe() {
+              const e = document.createElement('div');
+              return (e.className = 'AL-circle'), e;
+            }
+            function Le() {
+              const e = document.createElement('div');
+              return (e.className = 'AL-cube'), e;
+            }
+            function Ve() {
+              const e = document.createElement('div');
+              return (e.className = 'AL-hexagon'), (e.innerHTML = `<div class="${e.className}__in"></div>`), e;
+            }
+            function Ee() {
+              const e = document.createElement('div');
+              return (
+                (e.className = 'AL-person'),
+                (e.innerHTML =
+                  '<svg id="person" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve"><style>.st5{fill:#fb855f}.st6{fill:#0f1048}</style><path d="M25 49.92c13.7 0 24.81-11.11 24.81-24.81S38.7.31 25 .31.19 11.42.19 25.12c0 13.69 11.11 24.8 24.81 24.8z" style="fill:#c9e6fc"/><defs><filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="8.17" y="32.29" width="33.65" height="33.65"><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></defs><mask maskUnits="userSpaceOnUse" x="8.17" y="32.29" width="33.65" height="33.65" id="mask0_8007_175759_00000181067212531250348400000000091437557680784052_"><path d="M24.99 49.92c13.7 0 24.81-11.11 24.81-24.81S38.69.3 24.99.3.18 11.41.18 25.11c.01 13.7 11.12 24.81 24.81 24.81z" style="fill:#c9e6fc;filter:url(#Adobe_OpacityMaskFilter)"/></mask><g style="mask:url(#mask0_8007_175759_00000181067212531250348400000000091437557680784052_)"><path d="M25 65.94c9.29 0 16.83-7.53 16.83-16.83 0-9.29-7.53-16.83-16.83-16.83-9.29 0-16.83 7.53-16.83 16.83 0 9.3 7.53 16.83 16.83 16.83z" style="fill:#6c6cff"/></g><path d="M32.2 35.89c0-3.81-3.07-3.24-6.91-3.24-3.84 0-6.91-.6-6.91 3.24s3.07 6.91 6.91 6.91c3.84 0 6.91-3.1 6.91-6.91z" style="fill:#fff"/><path class="st5" d="M25 8.82c-4.11 0-7.44 3.34-7.44 7.44v5.51c0 4.11 3.34 7.44 7.44 7.44s7.44-3.34 7.44-7.44v-5.51c.01-4.13-3.33-7.44-7.44-7.44z"/><path class="st5" d="M24.85 37.8h.37c1.74 0 3.14-1.4 3.14-3.14v-7.55c0-1.74-1.4-3.14-3.14-3.14h-.37c-1.74 0-3.14 1.4-3.14 3.14v7.55a3.145 3.145 0 0 0 3.14 3.14z"/><path class="st6" d="M25.02 13.53c1.83 0 3.31-1.48 3.31-3.31s-1.48-3.31-3.31-3.31-3.31 1.48-3.31 3.31 1.48 3.31 3.31 3.31z"/><path class="st6" d="M30.92 15.4c2.34 0 4.24-1.9 4.24-4.24s-1.9-4.24-4.24-4.24c-2.34 0-4.24 1.9-4.24 4.24s1.9 4.24 4.24 4.24zM17.86 14.23c.4.2.87.3 1.37.3 1.84 0 3.31-1.47 3.31-3.31 0-.63-.2-1.24-.5-1.77a7.267 7.267 0 0 0-4.18 4.78z"/></svg>'),
+                e
+              );
+            }
+            const j = 'AL-letter';
+            function Ie() {
+              const e = document.createElement('div');
+              return (
+                (e.className = j),
+                (e.innerHTML = `
+
+<span class="${j}__1"></span>
+<span class="${j}__2"></span>
+<span class="${j}__3"></span>
+`),
+                e
+              );
+            }
+            function Oe() {
+              const e = document.createElement('section');
+              e.id = 'AL-container';
+              const t = document.createElement('div');
+              return (
+                (t.className = 'AL-loader'),
+                t.appendChild(Me()),
+                t.appendChild(Fe()),
+                t.appendChild(Le()),
+                t.appendChild(Ve()),
+                t.appendChild(Ee()),
+                t.appendChild(Ie()),
+                e.appendChild(t),
+                e
+              );
+            }
+            const Ae = () => {
+              const e = performance.now();
+              let t = 0,
+                i = 0,
+                r = performance.now(),
+                n = !0,
+                s;
+              const a = () => {
+                const c = performance.now(),
+                  d = c - r;
+                (r = c), i++, d > 100 && t++, n && (s = requestAnimationFrame(a));
+              };
+              return (
+                (s = requestAnimationFrame(a)),
+                () => {
+                  (n = !1), cancelAnimationFrame(s);
+                  const c = r - e,
+                    d = i / (c / 1e3);
+                  return { numOfFrames: i, freezes: t, averageFramesPerSecond: d };
+                }
+              );
+            };
+            function $e() {
+              return new URLSearchParams(window.location.search).has('cssLoader') ? 'css' : 'canvas';
+            }
+            function ke(e, t) {
+              const i = Oe();
+              (e || document.body).append(i);
+              const { unsubscribe: r } = o.subscribe(() => {
+                r(),
+                  (i.style.opacity = '0'),
+                  i.addEventListener('transitionend', () => {
+                    i.remove(), t?.();
+                  });
+              });
+            }
+            function Re(e, t) {
+              const i = new v();
+              i.init(e || document.body);
+              const r = i.addElement(new Te()),
+                { unsubscribe: n } = o.subscribe(() => {
+                  n(),
+                    r.onFinish.subscribe(() => {
+                      i.clean(() => {
+                        t?.();
+                      });
+                    });
+                });
+              return i;
+            }
+            function _e(e) {
+              const t = Ae(),
+                i = () => {
+                  console.log('app-loader fps measure', t()),
+                    window.top?.postMessage({ type: 'clean-app-loader-iframe' }, '*');
+                };
+              return (
+                setTimeout(() => {
+                  console.log('app-loader fps measure', t());
+                }, 30 * 1e3),
+                window.addEventListener('message', n => {
+                  typeof n.data == 'object' && n.data.type === 'router-loaded' && o.notify({ loadedPart: 'router' });
+                }),
+                $e() === 'css' ? ke(e, i) : Re(e, i)
+              );
+            }
+            _e(), (window.onRouteLoad = o);
+            const { init: We, updateInitialData: De, unmount: Pe, render: Be } = u,
+              q = e => {
+                if (e)
+                  return (...t) => {
+                    try {
+                      e(...t);
+                    } catch (i) {
+                      const { loggerService: r } = Y();
+                      throw (r ? r.error(i) : console.error(i), i);
+                    }
+                  };
+              },
+              Ne = !1,
+              Ye = e =>
+                new Proxy(e, {
+                  get(t, i) {
+                    if (i === 'loggerService' && t.loggerService) {
+                      const { loggerService: r } = t;
+                      return {
+                        ...r,
+                        error: (n, s, a) => {
+                          Ne
+                            ? (console.log(
+                                `%cSimulating sending errors to %cSentry
 
 %cThe following error will be sent to Sentry on production and staging envs: `,
-                                  'font-size:16px;',
-                                  'font-size:16px; color: #7e4fd2; font-weight: 700;',
-                                  ''
-                                ),
-                                console.error(n))
-                              : r.error(n, s, a, 'mf-app-loader');
-                          },
-                        };
-                      }
-                      return t[i];
-                    },
-                  });
-              function He({ api: e, ...t }) {
-                const i = Ye(e);
-                X(i),
-                  J({
-                    project: 'mf-app-loader',
-                    release: '3241fe65bb877a1911ad8ac9bd4bc75b1473232c',
-                    dsn: 'https://e783845ae69d94bf96b7c4e897243fab@o916138.ingest.sentry.io/4506541835354112',
-                    environment: 'staging',
-                    origin: 'https://microfrontends.mondaystaging.com/mf-app-loader',
-                  }),
-                  q(We)({ api: i, ...t });
-              }
-              const je = q(Be),
-                Ue = q(De),
-                qe = q(Pe);
-            })(),
+                                'font-size:16px;',
+                                'font-size:16px; color: #7e4fd2; font-weight: 700;',
+                                ''
+                              ),
+                              console.error(n))
+                            : r.error(n, s, a, '');
+                        },
+                      };
+                    }
+                    return t[i];
+                  },
+                });
+            function He({ api: e, ...t }) {
+              const i = Ye(e);
+              X(i),
+                J({ project: '', release: '', dsn: '', environment: '', origin: 'undefined/undefined' }),
+                q(We)({ api: i, ...t });
+            }
+            const Ue = q(Be),
+              je = q(De),
+              qe = q(Pe);
+          })(),
             (window['MF-mf-app-loader'] = Q);
         })();
       })();
