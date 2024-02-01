@@ -257,14 +257,13 @@
                 z(this.canvasElement, this.ctx, t.width, t.height), (this.width = t.width), (this.height = t.height);
               }
               callNextDrawFrame() {
-                let t;
                 this.requestedAnimationFrame = requestAnimationFrame(() => {
                   this.cleaned ||
-                    ((!t || performance.now() - t < 10) &&
+                    ((!this.previousFrameTime || performance.now() - this.previousFrameTime > 10) &&
                       (this.ctx.clearRect(0, 0, this.width, this.height),
                       this.updateFrame(),
                       this.drawFrame(),
-                      (t = performance.now())),
+                      (this.previousFrameTime = performance.now())),
                     this.callNextDrawFrame());
                 });
               }
